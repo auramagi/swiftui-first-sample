@@ -7,6 +7,9 @@
       <FileRef
          location = "group:README.txt">
       </FileRef>
+      <FileRef
+         location = "group:LICENSE">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:Dogs.xcodeproj">
