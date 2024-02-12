@@ -13,3 +13,8 @@ struct MainScreen: View {
         Text("Hello")
     }
 }
+
+#Preview {
+    MainScreen()
+        .mockContainer(.app)
+}

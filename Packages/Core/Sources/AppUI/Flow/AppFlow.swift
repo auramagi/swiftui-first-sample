@@ -20,3 +20,9 @@ public struct AppFlow<Container: AppContainer>: View {
             .dependency(container)
     }
 }
+
+#Preview {
+    WithMockContainer(.app) { container in
+        AppFlow(container: container)
+    }
+}
