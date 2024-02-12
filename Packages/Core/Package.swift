@@ -33,7 +33,7 @@ let package = Package(
         ),
         .target(
             name: "AppServices",
-            dependencies: ["Core", "CommonServices"]
+            dependencies: ["Core", "CommonServices", "AppUI"]
         ),
         
         .target(

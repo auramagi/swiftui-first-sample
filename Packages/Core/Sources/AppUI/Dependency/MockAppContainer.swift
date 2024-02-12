@@ -10,7 +10,13 @@ import SwiftUI
 
 public final class MockAppContainer: MockDependencyContainer, AppContainer {
     public struct Configuration {
-        public init() { }
+        var breeds: BreedList
+        
+        public init(
+            breeds: BreedList = .mock
+        ) {
+            self.breeds = breeds
+        }
     }
     
     public let configuration: Configuration
@@ -23,6 +29,7 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
             state: .init(),
             actions: .init()
         )
+        app.state.breedList.breeds = configuration.breeds.map()
     }
 }
 

@@ -9,9 +9,12 @@ import Core
 import SwiftUI
 
 public struct AppState: ViewInjectable {
+    public var breedList = BreedList()
+    
     public init() { }
     
     public func inject(content: Content) -> some View {
         content
+            .environmentObject(breedList)
     }
 }

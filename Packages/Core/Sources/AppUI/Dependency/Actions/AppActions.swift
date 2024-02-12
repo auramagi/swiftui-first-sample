@@ -13,6 +13,8 @@ public struct AppActions: ViewInjectable {
         static let defaultValue = AppActions()
     }
     
+    public var breedList = BreedList()
+    
     public var dogImage = DogImage()
     
     public init() { }

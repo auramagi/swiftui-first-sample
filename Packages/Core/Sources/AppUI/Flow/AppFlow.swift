@@ -22,7 +22,7 @@ public struct AppFlow<Container: AppContainer>: View {
                     Label("Random", systemImage: "photo")
                 }
             
-            Text("🚧 Under construction 🚧")
+            BreedListFlow(container: container)
                 .tabItem {
                     Label("Breeds", systemImage: "list.bullet")
                 }
