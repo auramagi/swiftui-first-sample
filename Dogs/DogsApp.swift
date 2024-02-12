@@ -5,6 +5,8 @@
 //  Created by Mikhail Apurin on 2024-02-12.
 //
 
+import Core
+import AppUI
 import LiveApp
 import SwiftUI
 
@@ -18,7 +20,8 @@ struct DogsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Text("Hello")
+            AppFlow(container: container)
+                .dependency(container)
         }
     }
 }
