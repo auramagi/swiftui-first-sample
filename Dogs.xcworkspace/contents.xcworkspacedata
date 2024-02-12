@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Environment">
+      <FileRef
+         location = "group:README.txt">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:Dogs.xcodeproj">
+   </FileRef>
+</Workspace>
