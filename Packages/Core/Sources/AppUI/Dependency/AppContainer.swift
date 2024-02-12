@@ -15,5 +15,6 @@ public protocol AppContainer: DependencyContainer {
 extension AppContainer {
     public func inject(content: Content) -> some View {
         content
+            .dependency(app)
     }
 }

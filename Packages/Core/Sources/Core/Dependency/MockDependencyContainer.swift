@@ -24,7 +24,7 @@ public struct WithMockContainer<Container: MockDependencyContainer, Content: Vie
 
     public init(
         _ container: @autoclosure @escaping () -> Container,
-        @ViewBuilder content: @escaping (Container) -> Content
+        @ViewBuilder content: @escaping (_ container: Container) -> Content
     ) {
         self._storage = .init(wrappedValue: .init(container: container()))
         self.content = content

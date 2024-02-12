@@ -13,10 +13,13 @@ public struct AppActions: ViewInjectable {
         static let defaultValue = AppActions()
     }
     
+    public var dogImage = DogImage()
+    
     public init() { }
     
     public func inject(content: Content) -> some View {
         content
+            .environment(\.appActions, self)
     }
 }
 

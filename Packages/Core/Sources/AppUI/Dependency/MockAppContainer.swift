@@ -28,9 +28,12 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
 
 extension MockDependencyContainer where Self == MockAppContainer {
     public static func app(
-        configuration: MockAppContainer.Configuration
+        configuration: MockAppContainer.Configuration = .init(),
+        configure: (Self) -> Void = { _ in }
     ) -> Self {
-        .init(configuration: configuration)
+        let container = Self(configuration: configuration)
+        configure(container)
+        return container
     }
     
     public static var app: Self {

@@ -16,8 +16,22 @@ public struct AppFlow<Container: AppContainer>: View {
     }
     
     public var body: some View {
-        MainScreen()
-            .dependency(container)
+        TabView {
+            RandomImageFlow(container: container)
+                .tabItem {
+                    Label("Random", systemImage: "photo")
+                }
+            
+            Text("🚧 Under construction 🚧")
+                .tabItem {
+                    Label("Breeds", systemImage: "list.bullet")
+                }
+            
+            Text("🚧 Under construction 🚧")
+                .tabItem {
+                    Label("User", systemImage: "person")
+                }
+        }
     }
 }
 
