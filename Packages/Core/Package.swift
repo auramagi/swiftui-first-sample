@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Core",
+    platforms: [.iOS(.v16), .macOS(.v13), .watchOS(.v9)],
     products: [
         .library(name: "Core", targets: ["Core"]),
         .library(name: "CommonUI", targets: ["CommonUI"]),
@@ -37,7 +38,7 @@ let package = Package(
         
         .target(
             name: "LiveApp",
-            dependencies: ["Core", "CommonServices", "AppServices"]
+            dependencies: ["Core", "CommonServices", "AppServices", "AppUI"]
         ),
     ]
 )

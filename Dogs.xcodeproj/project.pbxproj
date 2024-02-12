@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A34ECB122B79E66000C10200 /* LiveApp in Frameworks */ = {isa = PBXBuildFile; productRef = A34ECB112B79E66000C10200 /* LiveApp */; };
 		A3E330DE2B79DB9E0034C25E /* DogsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E330DD2B79DB9E0034C25E /* DogsApp.swift */; };
-		A3E330E02B79DB9E0034C25E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E330DF2B79DB9E0034C25E /* ContentView.swift */; };
 		A3E330E22B79DBA00034C25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E330E12B79DBA00034C25E /* Assets.xcassets */; };
 		A3E330E52B79DBA00034C25E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E330E42B79DBA00034C25E /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,6 @@
 /* Begin PBXFileReference section */
 		A3E330DA2B79DB9E0034C25E /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3E330DD2B79DB9E0034C25E /* DogsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsApp.swift; sourceTree = "<group>"; };
-		A3E330DF2B79DB9E0034C25E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A3E330E12B79DBA00034C25E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3E330E42B79DBA00034C25E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -26,17 +25,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A34ECB122B79E66000C10200 /* LiveApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A34ECB102B79E66000C10200 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A3E330D12B79DB9E0034C25E = {
 			isa = PBXGroup;
 			children = (
 				A3E330DC2B79DB9E0034C25E /* Dogs */,
 				A3E330DB2B79DB9E0034C25E /* Products */,
+				A34ECB102B79E66000C10200 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				A3E330DD2B79DB9E0034C25E /* DogsApp.swift */,
-				A3E330DF2B79DB9E0034C25E /* ContentView.swift */,
 				A3E330E12B79DBA00034C25E /* Assets.xcassets */,
 				A3E330E32B79DBA00034C25E /* Preview Content */,
 			);
@@ -83,6 +90,9 @@
 			dependencies = (
 			);
 			name = Dogs;
+			packageProductDependencies = (
+				A34ECB112B79E66000C10200 /* LiveApp */,
+			);
 			productName = Dogs;
 			productReference = A3E330DA2B79DB9E0034C25E /* Dogs.app */;
 			productType = "com.apple.product-type.application";
@@ -137,7 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3E330E02B79DB9E0034C25E /* ContentView.swift in Sources */,
 				A3E330DE2B79DB9E0034C25E /* DogsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +353,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A34ECB112B79E66000C10200 /* LiveApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LiveApp;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A3E330D22B79DB9E0034C25E /* Project object */;
 }
