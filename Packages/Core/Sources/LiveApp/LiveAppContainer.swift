@@ -26,6 +26,8 @@ public final class LiveAppContainer: AppContainer {
     
     let api: DogAPIClient
     
+    let breedListService: BreedsListService
+    
     let dogImageService: DogImageService
     
     public init(configuration: Configuration) {
@@ -38,7 +40,10 @@ public final class LiveAppContainer: AppContainer {
             session: .shared,
             configuration: .init(baseURL: configuration.apiBaseURL)
         )
+        self.breedListService = .init(api: api, state: app.state.breedList)
         self.dogImageService = .init(api: api)
+        
+        breedListService.connect(&app.actions.breedList)
         dogImageService.connect(&app.actions.dogImage)
     }
 }

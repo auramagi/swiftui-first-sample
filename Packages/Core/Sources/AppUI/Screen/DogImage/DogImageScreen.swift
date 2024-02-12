@@ -43,6 +43,7 @@ struct DogImageScreen: View {
         }
         .task(id: state?.id) {
             if let state {
+                guard !state.didFinish else { return } // Don't reload on each appearance
                 do {
                     let url = try await dogImage.getImage(state.input)
                     self.state?.state = .completed(url)

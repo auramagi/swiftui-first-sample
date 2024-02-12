@@ -21,6 +21,9 @@ struct BreedListScreen: View {
                 }
             }
         }
+        .task {
+            await breeds.refresh()
+        }
         .refreshable {
             await breeds.refresh()
         }
