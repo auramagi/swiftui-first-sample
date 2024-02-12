@@ -11,4 +11,7 @@
    <FileRef
       location = "group:Dogs.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Packages/Core">
+   </FileRef>
 </Workspace>
