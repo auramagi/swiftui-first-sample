@@ -13,7 +13,9 @@ import SwiftUI
 @main
 struct DogsApp: App {
     static var configuration: LiveAppContainer.Configuration {
-        .init()
+        .init(
+            apiBaseURL: .init(string: "https://dog.ceo/api")!
+        )
     }
     
     @State var container = LiveAppContainer(configuration: configuration)
