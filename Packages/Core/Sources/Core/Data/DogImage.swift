@@ -7,6 +7,8 @@
 
 import Foundation
 
-public enum DogImage {
+public enum DogImage: Hashable {
     case random
+    
+    case breed(ConcreteBreed)
 }

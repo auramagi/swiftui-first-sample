@@ -16,6 +16,14 @@ struct BreedListFlow<Container: AppContainer>: View {
             BreedListScreen()
                 .dependency(container)
                 .navigationTitle("Breeds")
+                .navigationDestination(for: BreedListScreenDestination.self) { destination in
+                    switch destination {
+                    case let .breedImage(breed):
+                        DogImageScreen(image: .breed(breed))
+                            .navigationTitle(breed.formatted(.breedName))
+                            .dependency(container)
+                    }
+                }
         }
     }
 }

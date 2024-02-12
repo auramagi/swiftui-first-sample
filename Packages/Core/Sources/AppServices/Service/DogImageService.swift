@@ -24,6 +24,17 @@ public final class DogImageService {
         switch image {
         case .random:
             try await api.execute(DogAPI.RandomImageRequest.Single.Get()).message
+            
+        case let .breed(breed):
+            try await getDogBreedImage(breed: breed)
+        }
+    }
+    
+    public func getDogBreedImage(breed: ConcreteBreed) async throws -> URL {
+        if let subBreed = breed.subBreed {
+            return try await api.execute(DogAPI.SubBreedImageRequest.Random.Single.Get(breed: breed.breed, subBreed: subBreed)).message
+        } else {
+            return try await api.execute(DogAPI.BreedImageRequest.Random.Single.Get(breed: breed.breed)).message
         }
     }
 }
