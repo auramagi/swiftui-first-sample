@@ -9,9 +9,12 @@ let package = Package(
         .library(name: "Core", targets: ["Core"]),
         .library(name: "CommonUI", targets: ["CommonUI"]),
         .library(name: "AppUI", targets: ["AppUI"]),
+        .library(name: "WatchUI", targets: ["WatchUI"]),
         .library(name: "CommonServices", targets: ["CommonServices"]),
         .library(name: "AppServices", targets: ["AppServices"]),
+        .library(name: "WatchServices", targets: ["WatchServices"]),
         .library(name: "LiveApp", targets: ["LiveApp"]),
+        .library(name: "LiveWatch", targets: ["LiveWatch"]),
     ],
     targets: [
         .target(
@@ -26,6 +29,10 @@ let package = Package(
             name: "AppUI", 
             dependencies: ["Core", "CommonUI"]
         ),
+        .target(
+            name: "WatchUI",
+            dependencies: ["Core", "CommonUI"]
+        ),
         
         .target(
             name: "CommonServices", 
@@ -35,10 +42,18 @@ let package = Package(
             name: "AppServices",
             dependencies: ["Core", "CommonServices", "AppUI"]
         ),
+        .target(
+            name: "WatchServices",
+            dependencies: ["Core", "CommonServices", "WatchUI"]
+        ),
         
         .target(
             name: "LiveApp",
             dependencies: ["Core", "CommonServices", "AppServices", "AppUI"]
+        ),
+        .target(
+            name: "LiveWatch",
+            dependencies: ["Core", "CommonServices", "WatchServices"]
         ),
     ]
 )

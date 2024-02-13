@@ -8,12 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		A34ECB122B79E66000C10200 /* LiveApp in Frameworks */ = {isa = PBXBuildFile; productRef = A34ECB112B79E66000C10200 /* LiveApp */; };
+		A39D33352B7A55F000A1E608 /* WatchDogsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D33342B7A55F000A1E608 /* WatchDogsApp.swift */; };
+		A39D33392B7A55F100A1E608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39D33382B7A55F100A1E608 /* Assets.xcassets */; };
+		A39D333C2B7A55F100A1E608 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39D333B2B7A55F100A1E608 /* Preview Assets.xcassets */; };
+		A39D333F2B7A55F100A1E608 /* WatchDogs Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A39D33322B7A55F000A1E608 /* WatchDogs Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A39D33612B7AF1A600A1E608 /* LiveWatch in Frameworks */ = {isa = PBXBuildFile; productRef = A39D33602B7AF1A600A1E608 /* LiveWatch */; };
+		A39D33652B7AF1A600A1E608 /* WatchUI in Frameworks */ = {isa = PBXBuildFile; productRef = A39D33642B7AF1A600A1E608 /* WatchUI */; };
 		A3E330DE2B79DB9E0034C25E /* DogsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E330DD2B79DB9E0034C25E /* DogsApp.swift */; };
 		A3E330E22B79DBA00034C25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E330E12B79DBA00034C25E /* Assets.xcassets */; };
 		A3E330E52B79DBA00034C25E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E330E42B79DBA00034C25E /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A39D333D2B7A55F100A1E608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3E330D22B79DB9E0034C25E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A39D33312B7A55F000A1E608;
+			remoteInfo = "WatchDogs Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A39D33432B7A55F100A1E608 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A39D333F2B7A55F100A1E608 /* WatchDogs Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A39D33322B7A55F000A1E608 /* WatchDogs Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchDogs Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A39D33342B7A55F000A1E608 /* WatchDogsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDogsApp.swift; sourceTree = "<group>"; };
+		A39D33382B7A55F100A1E608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A39D333B2B7A55F100A1E608 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3E330DA2B79DB9E0034C25E /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3E330DD2B79DB9E0034C25E /* DogsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsApp.swift; sourceTree = "<group>"; };
 		A3E330E12B79DBA00034C25E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -21,6 +55,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A39D332F2B7A55F000A1E608 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A39D33652B7AF1A600A1E608 /* WatchUI in Frameworks */,
+				A39D33612B7AF1A600A1E608 /* LiveWatch in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E330D72B79DB9E0034C25E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,10 +82,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A39D33332B7A55F000A1E608 /* WatchDogs Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				A39D33342B7A55F000A1E608 /* WatchDogsApp.swift */,
+				A39D33382B7A55F100A1E608 /* Assets.xcassets */,
+				A39D333A2B7A55F100A1E608 /* Preview Content */,
+			);
+			path = "WatchDogs Watch App";
+			sourceTree = "<group>";
+		};
+		A39D333A2B7A55F100A1E608 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A39D333B2B7A55F100A1E608 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		A3E330D12B79DB9E0034C25E = {
 			isa = PBXGroup;
 			children = (
 				A3E330DC2B79DB9E0034C25E /* Dogs */,
+				A39D33332B7A55F000A1E608 /* WatchDogs Watch App */,
 				A3E330DB2B79DB9E0034C25E /* Products */,
 				A34ECB102B79E66000C10200 /* Frameworks */,
 			);
@@ -52,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				A3E330DA2B79DB9E0034C25E /* Dogs.app */,
+				A39D33322B7A55F000A1E608 /* WatchDogs Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,6 +140,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A39D33312B7A55F000A1E608 /* WatchDogs Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A39D33402B7A55F100A1E608 /* Build configuration list for PBXNativeTarget "WatchDogs Watch App" */;
+			buildPhases = (
+				A39D332E2B7A55F000A1E608 /* Sources */,
+				A39D332F2B7A55F000A1E608 /* Frameworks */,
+				A39D33302B7A55F000A1E608 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchDogs Watch App";
+			packageProductDependencies = (
+				A39D33602B7AF1A600A1E608 /* LiveWatch */,
+				A39D33642B7AF1A600A1E608 /* WatchUI */,
+			);
+			productName = "WatchDogs Watch App";
+			productReference = A39D33322B7A55F000A1E608 /* WatchDogs Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A3E330D92B79DB9E0034C25E /* Dogs */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3E330E82B79DBA00034C25E /* Build configuration list for PBXNativeTarget "Dogs" */;
@@ -84,10 +168,12 @@
 				A3E330D62B79DB9E0034C25E /* Sources */,
 				A3E330D72B79DB9E0034C25E /* Frameworks */,
 				A3E330D82B79DB9E0034C25E /* Resources */,
+				A39D33432B7A55F100A1E608 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A39D333E2B7A55F100A1E608 /* PBXTargetDependency */,
 			);
 			name = Dogs;
 			packageProductDependencies = (
@@ -107,6 +193,9 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					A39D33312B7A55F000A1E608 = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					A3E330D92B79DB9E0034C25E = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -126,11 +215,21 @@
 			projectRoot = "";
 			targets = (
 				A3E330D92B79DB9E0034C25E /* Dogs */,
+				A39D33312B7A55F000A1E608 /* WatchDogs Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A39D33302B7A55F000A1E608 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A39D333C2B7A55F100A1E608 /* Preview Assets.xcassets in Resources */,
+				A39D33392B7A55F100A1E608 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E330D82B79DB9E0034C25E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,6 +242,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A39D332E2B7A55F000A1E608 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A39D33352B7A55F000A1E608 /* WatchDogsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E330D62B79DB9E0034C25E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,7 +260,75 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A39D333E2B7A55F100A1E608 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A39D33312B7A55F000A1E608 /* WatchDogs Watch App */;
+			targetProxy = A39D333D2B7A55F100A1E608 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		A39D33412B7A55F100A1E608 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchDogs Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = FK4VRNJVL7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchDogs;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = me.apurin.Dogs;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.apurin.Dogs.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		A39D33422B7A55F100A1E608 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchDogs Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = FK4VRNJVL7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchDogs;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = me.apurin.Dogs;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.apurin.Dogs.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		A3E330E62B79DBA00034C25E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -206,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -263,7 +438,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -276,6 +451,7 @@
 		A3E330E92B79DBA00034C25E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -305,6 +481,7 @@
 		A3E330EA2B79DBA00034C25E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -334,6 +511,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A39D33402B7A55F100A1E608 /* Build configuration list for PBXNativeTarget "WatchDogs Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A39D33412B7A55F100A1E608 /* Debug */,
+				A39D33422B7A55F100A1E608 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A3E330D52B79DB9E0034C25E /* Build configuration list for PBXProject "Dogs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -358,6 +544,14 @@
 		A34ECB112B79E66000C10200 /* LiveApp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LiveApp;
+		};
+		A39D33602B7AF1A600A1E608 /* LiveWatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LiveWatch;
+		};
+		A39D33642B7AF1A600A1E608 /* WatchUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WatchUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
