@@ -7,6 +7,7 @@
 
 import AppServices
 import AppUI
+import DogAPI
 import SwiftUI
 
 public final class LiveAppContainer: AppContainer {

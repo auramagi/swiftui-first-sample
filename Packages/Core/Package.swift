@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "CommonServices", targets: ["CommonServices"]),
         .library(name: "AppServices", targets: ["AppServices"]),
         .library(name: "WatchServices", targets: ["WatchServices"]),
+        .library(name: "DogAPI", targets: ["DogAPI"]),
         .library(name: "LiveApp", targets: ["LiveApp"]),
         .library(name: "LiveWatch", targets: ["LiveWatch"]),
     ],
@@ -40,7 +41,7 @@ let package = Package(
         ),
         .target(
             name: "AppServices",
-            dependencies: ["Core", "CommonServices", "AppUI"]
+            dependencies: ["Core", "CommonServices", "AppUI", "DogAPI"]
         ),
         .target(
             name: "WatchServices",
@@ -48,12 +49,17 @@ let package = Package(
         ),
         
         .target(
+            name: "DogAPI",
+            dependencies: ["Core"]
+        ),
+        
+        .target(
             name: "LiveApp",
-            dependencies: ["Core", "CommonServices", "AppServices", "AppUI"]
+            dependencies: ["Core", "AppUI", "CommonServices", "AppServices", "DogAPI"]
         ),
         .target(
             name: "LiveWatch",
-            dependencies: ["Core", "CommonServices", "WatchServices"]
+            dependencies: ["Core", "WatchUI", "CommonServices", "WatchServices", "DogAPI"]
         ),
     ]
 )

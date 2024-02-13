@@ -7,6 +7,7 @@
 
 import AppUI
 import Core
+import DogAPI
 import Foundation
 
 public final class BreedsListService {
