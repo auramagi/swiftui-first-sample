@@ -73,7 +73,30 @@ public struct FavoritesGridItem: View {
     }
 }
 
+private let previewFavorites = [
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+    FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
+]
+
 #Preview {
+    NavigationStack {
+        WithMockContainer(.app(configuration: .init(favorites: previewFavorites))) { container in
+            FavoritesScreen(grid: container.makeFavoritesGrid())
+        }
+        .navigationTitle("Favorites")
+    }
+}
+
+#Preview("Empty") {
     NavigationStack {
         WithMockContainer(.app) { container in
             FavoritesScreen(grid: container.makeFavoritesGrid())

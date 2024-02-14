@@ -16,11 +16,11 @@ public final class BreedsListService {
     
     private var lastRefresh = Date.distantPast
 
-    private var realm: Realm.Configuration
+    private var realmConfiguration: Realm.Configuration
 
-    public init(api: DogAPIClient, realm: Realm.Configuration) {
+    public init(api: DogAPIClient, realmConfiguration: Realm.Configuration) {
         self.api = api
-        self.realm = realm
+        self.realmConfiguration = realmConfiguration
     }
     
     public func refresh() async {
@@ -35,7 +35,7 @@ public final class BreedsListService {
     }
 
     @MainActor func save(breeds: [BreedListItem]) throws {
-        let realm = try Realm(configuration: realm)
+        let realm = try Realm(configuration: realmConfiguration)
         try realm.write {
             let list = realm.objects(BreedListObject.self).first ?? realm.create(BreedListObject.self)
             realm.delete(realm.objects(BreedListItemObject.self))

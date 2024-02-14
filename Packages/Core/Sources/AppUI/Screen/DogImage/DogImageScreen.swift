@@ -33,13 +33,18 @@ struct DogImageScreen: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            Button {
-                state = .init(input: image)
-            } label: {
-                Label("Reload", systemImage: "arrow.triangle.2.circlepath")
+            HStack(spacing: 8) {
+                Button {
+                    state = .init(input: image)
+                } label: {
+                    Label("Reload", systemImage: "arrow.triangle.2.circlepath")
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(state?.didFinish == false)
+
+                DogImageFavoriteButton(resource: state?.value)
+                    .id(state?.value?.remoteURL)
             }
-            .buttonStyle(.borderedProminent)
-            .disabled(state?.didFinish == false)
             .padding()
         }
         .task(id: state?.id) {
@@ -59,6 +64,36 @@ struct DogImageScreen: View {
         }
         .onChange(of: image) { _ in
             state = .init(input: image)
+        }
+    }
+}
+
+struct DogImageFavoriteButton: View {
+    let resource: DogImageResource?
+
+    @StateObject private var state = FavoriteState()
+
+    @Environment(\.appActions.favorites) private var favorites
+
+    var body: some View {
+        Button {
+            guard let resource else { return }
+            if state.isFavorited {
+                try? favorites.unfavorite(resource)
+            } else {
+                try? favorites.favorite(resource)
+            }
+        } label: {
+            Label(state.isFavorited ? "Unfavorite" : "Favorite", systemImage: "star")
+                .labelStyle(.iconOnly)
+                .symbolVariant(state.isFavorited ? .fill : .none)
+        }
+        .buttonStyle(.borderedProminent)
+        .disabled(!state.canFavorite)
+        .padding()
+        .onFirstAppear {
+            guard let resource else { return }
+            favorites.connect(state, resource)
         }
     }
 }

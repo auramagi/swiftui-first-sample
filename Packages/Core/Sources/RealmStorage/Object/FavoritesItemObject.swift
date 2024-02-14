@@ -16,9 +16,11 @@ public final class FavoritesItemObject: Object, Identifiable {
 }
 
 extension FavoritesItem {
-    public init?(object: FavoritesItemObject) {
-        guard let url = URL(string: object.urlString) else { return nil }
-        self.init(id: object.id, resource: .remote(url))
+    public init(object: FavoritesItemObject) {
+        self.init(
+            id: object.id,
+            resource: URL(string: object.urlString).map { .remote($0) } ?? .placeholder
+        )
     }
 }
 

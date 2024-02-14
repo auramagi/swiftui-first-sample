@@ -11,4 +11,14 @@ public enum DogImageResource {
     case local(Image)
     
     case remote(URL)
+
+    case placeholder
+
+    public var remoteURL: URL? {
+        if case let .remote(url) = self {
+            url
+        } else {
+            nil
+        }
+    }
 }

@@ -32,4 +32,12 @@ public struct LoadingState<Input, Value>: Identifiable {
         case .completed, .error: true
         }
     }
+
+    public var value: Value? {
+        if case let .completed(value) = state {
+            value
+        } else {
+            nil
+        }
+    }
 }

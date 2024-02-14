@@ -15,11 +15,20 @@ struct SettingsScreen: View {
 
     let actions: Actions
 
+    @State private var isResetFavoritesDialogPresented = false
+
+    @Environment(\.appActions.favorites) private var favorites
+
     var body: some View {
         List {
             Section("Favorites") {
                 Button("Reset favorites", role: .destructive) {
-
+                    isResetFavoritesDialogPresented = true
+                }
+                .confirmationDialog("Reset favorites?", isPresented: $isResetFavoritesDialogPresented) {
+                    Button("Reset favorites", role: .destructive) {
+                        try? favorites.reset()
+                    }
                 }
             }
 

@@ -31,7 +31,9 @@ public final class LiveAppContainer: AppContainer {
     let breedListService: BreedsListService
     
     let dogImageService: DogImageService
-    
+
+    let favoritesService: FavoritesService
+
     public init(configuration: Configuration) {
         self.configuration = configuration
         self.app = .init(
@@ -42,11 +44,16 @@ public final class LiveAppContainer: AppContainer {
             session: .shared,
             configuration: .init(baseURL: configuration.apiBaseURL)
         )
-        self.breedListService = .init(api: api, realm: .defaultConfiguration)
+        self.breedListService = .init(api: api, realmConfiguration: .defaultConfiguration)
         self.dogImageService = .init(api: api)
-        
+        self.favoritesService = .init(realmConfiguration: .defaultConfiguration)
+
         app.actions.breedList.refresh = breedListService.refresh
         app.actions.dogImage.getImage = dogImageService.getImage(_:)
+        app.actions.favorites.connect = favoritesService.connect(state:resource:)
+        app.actions.favorites.favorite = favoritesService.favorite(resource:)
+        app.actions.favorites.reset = favoritesService.reset
+        app.actions.favorites.unfavorite = favoritesService.unfavorite(resource:)
     }
 
     public func makeBreedListView() -> some View {

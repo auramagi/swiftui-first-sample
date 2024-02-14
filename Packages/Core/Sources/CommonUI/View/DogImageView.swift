@@ -40,6 +40,9 @@ public struct DogImageView: View {
                     ProgressView()
                 }
             }
+
+        case .placeholder:
+            Color.clear
         }
     }
 }

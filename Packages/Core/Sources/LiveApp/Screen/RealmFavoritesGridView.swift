@@ -30,9 +30,6 @@ private struct RealmFavoritesGridItem: View {
     @ObservedRealmObject var object: FavoritesItemObject
 
     var body: some View {
-        FavoritesGridItem(item: .init(object: object)!)
+        FavoritesGridItem(item: .init(object: object))
     }
 }
-
-
-
