@@ -65,13 +65,12 @@ struct DogImageScreen: View {
 
 #Preview {
     DogImageScreen(image: .random)
-        .mockContainer(.app { container in
-            container.app.actions.dogImage.getImage = { _ in
-                try await Task.sleep(for: .seconds(1))
-                return .local(PreviewAsset.Image.kurosuke01)
-//                return .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
-            }
-        })
+        .mockContainer(.app(
+            configuration: .init(
+                defaultImage: .local(PreviewAsset.Image.kurosuke01)
+//                defaultImage: .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
+            )
+        ))
 }
 
 #Preview("Error") {

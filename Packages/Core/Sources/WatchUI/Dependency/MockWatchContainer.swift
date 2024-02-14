@@ -10,8 +10,12 @@ import SwiftUI
 
 public final class MockWatchContainer: MockDependencyContainer, WatchContainer {
     public struct Configuration {
+        var defaultImage: DogImageResource?
+
         public init(
+            defaultImage: DogImageResource? = nil
         ) {
+            self.defaultImage = defaultImage
         }
     }
     
@@ -24,7 +28,13 @@ public final class MockWatchContainer: MockDependencyContainer, WatchContainer {
         self.watch = .init(
             state: .init(),
             actions: .init()
-        )
+        )       
+        if let resource = configuration.defaultImage {
+            watch.actions.dogImage.getImage = { _ in
+                try? await Task.sleep(for: .seconds(1))
+                return resource
+            }
+        }
     }
 }
 

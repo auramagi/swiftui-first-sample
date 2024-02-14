@@ -55,16 +55,17 @@ struct DogImageScreen: View {
 
 #Preview {
     DogImageScreen(image: .random)
-        .mockContainer(.watch { container in
-            container.watch.actions.dogImage.getImage = { _ in
-                try await Task.sleep(for: .seconds(1))
-                return .local(PreviewAsset.Image.kurosuke01)
-//                return .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
-            }
-        })
+        .mockContainer(.watch(
+            configuration: .init(
+                defaultImage: .local(PreviewAsset.Image.kurosuke01)
+//                defaultImage: .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
+            )
+        ))
 }
 
 #Preview("Error") {
     DogImageScreen(image: .random)
-        .mockContainer(.watch)
+        .mockContainer(.watch {
+            $0.watch.actions.dogImage.getImage = { _ in throw .message("This is an error") }
+        })
 }

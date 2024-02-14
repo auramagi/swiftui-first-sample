@@ -6,6 +6,7 @@
 //
 
 import Core
+import PreviewAssets
 import SwiftUI
 
 public struct AppFlow<Container: WatchContainer>: View {
@@ -22,7 +23,11 @@ public struct AppFlow<Container: WatchContainer>: View {
 }
 
 #Preview {
-    WithMockContainer(.watch) { container in
+    WithMockContainer(.watch(
+        configuration: .init(
+            defaultImage: .local(PreviewAsset.Image.kurosuke01)
+        )
+    )) { container in
         AppFlow(container: container)
     }
 }
