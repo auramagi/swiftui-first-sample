@@ -26,8 +26,11 @@ public struct MainFlow<Container: AppContainer>: View {
                 .tabItem {
                     Label("Breeds", systemImage: "dog")
                 }
-            
-            Text("🚧 Under construction 🚧")
+
+            FavoritesFlow(container: container)
+                .tabItem {
+                    Label("Favorites", systemImage: "star")
+                }
 
             SettingsFlow(container: container)
                 .tabItem {
