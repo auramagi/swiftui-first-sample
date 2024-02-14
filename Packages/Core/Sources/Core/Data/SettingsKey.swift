@@ -14,3 +14,9 @@ extension SettingsKey {
         public static let didShow = "Welcome/didShow"
     }
 }
+
+extension SettingsKey {
+    public enum Favorites {
+        public static let prefersFill = "Favorites/prefersFill"
+    }
+}

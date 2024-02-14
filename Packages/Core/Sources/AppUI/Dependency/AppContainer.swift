@@ -13,6 +13,9 @@ public protocol AppContainer: DependencyContainer {
 
     associatedtype BreedListView: View
     func makeBreedListView() -> BreedListView
+
+    associatedtype FavoritesGrid: View
+    func makeFavoritesGrid() -> FavoritesGrid
 }
 
 extension AppContainer {

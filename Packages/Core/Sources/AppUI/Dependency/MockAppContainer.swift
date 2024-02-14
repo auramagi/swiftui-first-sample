@@ -17,14 +17,18 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
 
         var didShowWelcome: Bool
 
+        var favorites: [FavoritesItem]
+
         public init(
             breeds: BreedList = .mock,
             defaultImage: DogImageResource? = nil,
-            didShowWelcome: Bool = true
+            didShowWelcome: Bool = true,
+            favorites: [FavoritesItem] = []
         ) {
             self.breeds = breeds
             self.defaultImage = defaultImage
             self.didShowWelcome = didShowWelcome
+            self.favorites = favorites
         }
     }
     
@@ -60,6 +64,18 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
 
     public func makeBreedListView() -> some View {
         MockBreedListView(state: configuration.breeds.map())
+    }
+
+    public func makeFavoritesGrid() -> some View {
+        FavoritesGridContent {
+            if configuration.favorites.isEmpty {
+                FavoritesEmptyView()
+            } else {
+                ForEach(configuration.favorites) { item in
+                    FavoritesGridItem(item: item)
+                }
+            }
+        }
     }
 }
 

@@ -52,4 +52,16 @@ public final class LiveAppContainer: AppContainer {
     public func makeBreedListView() -> some View {
         RealmBreedListView()
     }
+
+    public func makeFavoritesGrid() -> some View {
+        FavoritesGridContent {
+//            if configuration.favorites.isEmpty {
+//                FavoritesEmptyView()
+//            } else {
+//                ForEach(configuration.favorites) { item in
+//                    FavoritesGridItem(item: item)
+//                }
+//            }
+        }
+    }
 }
