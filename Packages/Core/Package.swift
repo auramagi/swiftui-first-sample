@@ -23,7 +23,8 @@ let package = Package(
             name: "Core"
         ),
         .target(
-            name: "PreviewAssets"
+            name: "PreviewAssets",
+            exclude: ["_PreviewAssets.xcassets"]
         ),
         
         // MARK: UI
