@@ -38,7 +38,7 @@ extension MockDependencyContainer where Self == MockWatchContainer {
         return container
     }
     
-    public static var app: Self {
+    public static var watch: Self {
         .watch(configuration: .init())
     }
 }

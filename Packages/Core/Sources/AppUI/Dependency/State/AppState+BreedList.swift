@@ -9,9 +9,5 @@ import Core
 import Foundation
 
 extension AppState {
-    public final class BreedList: ObservableObject {
-        @Published public var breeds: [BreedListItem] = []
-        
-        init() { }
-    }
+    public final class BreedList: BreedListState { }
 }

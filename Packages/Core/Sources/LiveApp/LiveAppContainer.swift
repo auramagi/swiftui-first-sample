@@ -7,6 +7,7 @@
 
 import AppServices
 import AppUI
+import CommonServices
 import DogAPI
 import SwiftUI
 
@@ -44,7 +45,7 @@ public final class LiveAppContainer: AppContainer {
         self.breedListService = .init(api: api, state: app.state.breedList)
         self.dogImageService = .init(api: api)
         
-        breedListService.connect(&app.actions.breedList)
-        dogImageService.connect(&app.actions.dogImage)
+        app.actions.breedList.refresh = breedListService.refresh
+        app.actions.dogImage.getImage = dogImageService.getImage(_:)
     }
 }

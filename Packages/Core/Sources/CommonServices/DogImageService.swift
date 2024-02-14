@@ -5,7 +5,6 @@
 //  Created by Mikhail Apurin on 2024-02-12.
 //
 
-import AppUI
 import Core
 import DogAPI
 import Foundation
@@ -17,11 +16,7 @@ public final class DogImageService {
         self.api = api
     }
     
-    public func connect(_ actions: inout AppActions.DogImage) {
-        actions.getImage = getImage(_:)
-    }
-    
-    func getImage(_ image: DogImage) async throws -> URL {
+    public func getImage(_ image: DogImage) async throws -> URL {
         switch image {
         case .random:
             try await api.execute(DogAPI.RandomImageRequest.Single.Get()).message
@@ -33,9 +28,9 @@ public final class DogImageService {
     
     public func getDogBreedImage(breed: ConcreteBreed) async throws -> URL {
         if let subBreed = breed.subBreed {
-            return try await api.execute(DogAPI.SubBreedImageRequest.Random.Single.Get(breed: breed.breed, subBreed: subBreed)).message
+            try await api.execute(DogAPI.SubBreedImageRequest.Random.Single.Get(breed: breed.breed, subBreed: subBreed)).message
         } else {
-            return try await api.execute(DogAPI.BreedImageRequest.Random.Single.Get(breed: breed.breed)).message
+            try await api.execute(DogAPI.BreedImageRequest.Random.Single.Get(breed: breed.breed)).message
         }
     }
 }

@@ -12,14 +12,16 @@ import WatchUI
 @main
 struct WatchDogs_Watch_AppApp: App {
     static var configuration: LiveWatchContainer.Configuration {
-        .init()
+        .init(
+            apiBaseURL: .init(string: "https://dog.ceo/api")!
+        )
     }
     
     @State var container = LiveWatchContainer(configuration: configuration)
     
     var body: some Scene {
         WindowGroup {
-            Text("Hello")
+            AppFlow(container: container)
         }
     }
 }

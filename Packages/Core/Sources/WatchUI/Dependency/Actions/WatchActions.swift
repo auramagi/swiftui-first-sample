@@ -13,6 +13,8 @@ public struct WatchActions: ViewInjectable {
         static let defaultValue = WatchActions()
     }
     
+    public var dogImage = DogImage()
+    
     public init() { }
     
     public func inject(content: Content) -> some View {
