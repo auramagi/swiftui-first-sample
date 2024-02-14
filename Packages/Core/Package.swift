@@ -10,29 +10,42 @@ let package = Package(
         .library(name: "CommonUI", targets: ["CommonUI"]),
         .library(name: "AppUI", targets: ["AppUI"]),
         .library(name: "WatchUI", targets: ["WatchUI"]),
+        .library(name: "DogAPI", targets: ["DogAPI"]),
         .library(name: "CommonServices", targets: ["CommonServices"]),
         .library(name: "AppServices", targets: ["AppServices"]),
         .library(name: "WatchServices", targets: ["WatchServices"]),
-        .library(name: "DogAPI", targets: ["DogAPI"]),
         .library(name: "LiveApp", targets: ["LiveApp"]),
         .library(name: "LiveWatch", targets: ["LiveWatch"]),
     ],
     targets: [
+        // MARK: Core
         .target(
             name: "Core"
         ),
+        .target(
+            name: "PreviewAssets"
+        ),
+        
+        // MARK: UI
         
         .target(
             name: "CommonUI",
-            dependencies: ["Core"]
+            dependencies: ["Core", "PreviewAssets"]
         ),
         .target(
             name: "AppUI", 
-            dependencies: ["Core", "CommonUI"]
+            dependencies: ["Core", "PreviewAssets", "CommonUI"]
         ),
         .target(
             name: "WatchUI",
-            dependencies: ["Core", "CommonUI"]
+            dependencies: ["Core", "PreviewAssets", "CommonUI"]
+        ),
+        
+        // MARK: Services
+        
+        .target(
+            name: "DogAPI",
+            dependencies: ["Core"]
         ),
         
         .target(
@@ -48,10 +61,7 @@ let package = Package(
             dependencies: ["Core", "CommonServices", "WatchUI"]
         ),
         
-        .target(
-            name: "DogAPI",
-            dependencies: ["Core"]
-        ),
+        // MARK: Live containers
         
         .target(
             name: "LiveApp",

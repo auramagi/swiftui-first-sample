@@ -7,6 +7,7 @@
 
 import CommonUI
 import Core
+import PreviewAssets
 import SwiftUI
 
 struct DogImageScreen: View {
@@ -67,7 +68,8 @@ struct DogImageScreen: View {
         .mockContainer(.app { container in
             container.app.actions.dogImage.getImage = { _ in
                 try await Task.sleep(for: .seconds(1))
-                return .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
+                return .local(PreviewAsset.Image.kurosuke01!)
+//                return .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
             }
         })
 }
