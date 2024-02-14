@@ -17,6 +17,8 @@ public struct AppActions: ViewInjectable {
     
     public var dogImage = DogImage()
     
+    public var favorites = Favorites()
+
     public init() { }
     
     public func inject(content: Content) -> some View {

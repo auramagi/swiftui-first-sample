@@ -67,10 +67,10 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
     }
 
     public func makeFavoritesGrid() -> some View {
-        FavoritesGridContent {
-            if configuration.favorites.isEmpty {
-                FavoritesEmptyView()
-            } else {
+        if configuration.favorites.isEmpty {
+            FavoritesEmptyView()
+        } else {
+            FavoritesGridContent {
                 ForEach(configuration.favorites) { item in
                     FavoritesGridItem(item: item)
                 }

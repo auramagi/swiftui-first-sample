@@ -54,14 +54,6 @@ public final class LiveAppContainer: AppContainer {
     }
 
     public func makeFavoritesGrid() -> some View {
-        FavoritesGridContent {
-//            if configuration.favorites.isEmpty {
-//                FavoritesEmptyView()
-//            } else {
-//                ForEach(configuration.favorites) { item in
-//                    FavoritesGridItem(item: item)
-//                }
-//            }
-        }
+        RealmFavoritesGridView()
     }
 }

@@ -12,10 +12,10 @@ public protocol AppContainer: DependencyContainer {
     var app: AppDependency { get }
 
     associatedtype BreedListView: View
-    func makeBreedListView() -> BreedListView
+    @ViewBuilder func makeBreedListView() -> BreedListView
 
     associatedtype FavoritesGrid: View
-    func makeFavoritesGrid() -> FavoritesGrid
+    @ViewBuilder func makeFavoritesGrid() -> FavoritesGrid
 }
 
 extension AppContainer {
