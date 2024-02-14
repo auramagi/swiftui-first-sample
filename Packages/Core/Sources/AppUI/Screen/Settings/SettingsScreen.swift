@@ -9,6 +9,12 @@ import Core
 import SwiftUI
 
 struct SettingsScreen: View {
+    struct Actions {
+        var showWelcome: () -> Void = emptyAction()
+    }
+
+    let actions: Actions
+
     var body: some View {
         List {
             Section("Favorites") {
@@ -21,7 +27,7 @@ struct SettingsScreen: View {
                 LabeledContent("Version", value: version)
 
                 Button("Welcome screen") {
-
+                    actions.showWelcome()
                 }
             }
         }
@@ -37,6 +43,6 @@ struct SettingsScreen: View {
 }
 
 #Preview {
-    SettingsScreen()
+    SettingsScreen(actions: .init())
         .mockContainer(.app)
 }

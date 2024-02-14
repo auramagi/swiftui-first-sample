@@ -15,12 +15,16 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
 
         var defaultImage: DogImageResource?
 
+        var didShowWelcome: Bool
+
         public init(
             breeds: BreedList = .mock,
-            defaultImage: DogImageResource? = nil
+            defaultImage: DogImageResource? = nil,
+            didShowWelcome: Bool = true
         ) {
             self.breeds = breeds
             self.defaultImage = defaultImage
+            self.didShowWelcome = didShowWelcome
         }
     }
     
@@ -28,18 +32,30 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
     
     public var app: AppDependency
 
+    let defaults: UserDefaults
+
     public init(configuration: Configuration) {
         self.configuration = configuration
         self.app = .init(
             state: .init(),
             actions: .init()
         )
+        self.defaults = .mock()
+
         if let resource = configuration.defaultImage {
             app.actions.dogImage.getImage = { _ in
                 try? await Task.sleep(for: .seconds(1))
                 return resource
             }
         }
+        
+        defaults.set(configuration.didShowWelcome, forKey: SettingsKey.Welcome.didShow)
+    }
+
+    public func inject(content: Content) -> some View {
+        content
+            .dependency(app)
+            .defaultAppStorage(defaults)
     }
 
     public func makeBreedListView() -> some View {

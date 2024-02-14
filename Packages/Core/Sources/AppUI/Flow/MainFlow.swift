@@ -11,37 +11,54 @@ import SwiftUI
 public struct MainFlow<Container: AppContainer>: View {
     let container: Container
 
+    @AppStorage(SettingsKey.Welcome.didShow) private var didShowWelcome = false
+
     public init(container: Container) {
         self.container = container
     }
 
     public var body: some View {
-        TabView {
-            RandomImageFlow(container: container)
-                .tabItem {
-                    Label("Random", systemImage: "photo")
-                }
-            
-            BreedListFlow(container: container)
-                .tabItem {
-                    Label("Breeds", systemImage: "dog")
-                }
+        ZStack {
+            if didShowWelcome {
+                TabView {
+                    RandomImageFlow(container: container)
+                        .tabItem {
+                            Label("Random", systemImage: "photo")
+                        }
 
-            FavoritesFlow(container: container)
-                .tabItem {
-                    Label("Favorites", systemImage: "star")
-                }
+                    BreedListFlow(container: container)
+                        .tabItem {
+                            Label("Breeds", systemImage: "dog")
+                        }
 
-            SettingsFlow(container: container)
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    FavoritesFlow(container: container)
+                        .tabItem {
+                            Label("Favorites", systemImage: "star")
+                        }
+
+                    SettingsFlow(container: container)
+                        .tabItem {
+                            Label("Settings", systemImage: "gear")
+                        }
                 }
+            } else {
+                WelcomeScreen(actions: .init(
+                    dismiss: { didShowWelcome = true }
+                ))
+            }
         }
+        .animation(.default, value: didShowWelcome)
     }
 }
 
 #Preview {
     WithMockContainer(.app) { container in
+        MainFlow(container: container)
+    }
+}
+
+#Preview("Welcome") {
+    WithMockContainer(.app(configuration: .init(didShowWelcome: false))) { container in
         MainFlow(container: container)
     }
 }

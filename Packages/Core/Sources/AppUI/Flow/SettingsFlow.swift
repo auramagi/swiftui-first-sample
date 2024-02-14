@@ -11,13 +11,21 @@ import SwiftUI
 struct SettingsFlow<Container: AppContainer>: View {
     let container: Container
 
+    @State private var isShowingWelcome = false
+
     var body: some View {
         NavigationStack {
-            SettingsScreen()
-                .dependency(container)
-                .navigationTitle("Settings")
+            SettingsScreen(actions: .init(
+                showWelcome: { isShowingWelcome = true }
+            ))
+            .dependency(container)
+            .navigationTitle("Settings")
         }
-
+        .sheet(isPresented: $isShowingWelcome) {
+            WelcomeScreen(actions: .init(
+                dismiss: { isShowingWelcome = false }
+            ))
+        }
     }
 }
 
