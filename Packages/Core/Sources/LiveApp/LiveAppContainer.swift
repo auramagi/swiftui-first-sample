@@ -49,7 +49,7 @@ public final class LiveAppContainer: AppContainer {
         app.actions.dogImage.getImage = dogImageService.getImage(_:)
     }
 
-    public func makeBreedListScreen() -> some View {
-        RealmBreedListScreen()
+    public func makeBreedListView() -> some View {
+        RealmBreedListView()
     }
 }

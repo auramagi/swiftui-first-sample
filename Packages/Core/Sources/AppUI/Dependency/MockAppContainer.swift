@@ -42,8 +42,8 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
         }
     }
 
-    public func makeBreedListScreen() -> some View {
-        MockBreedListScreen(state: configuration.breeds.map())
+    public func makeBreedListView() -> some View {
+        MockBreedListView(state: configuration.breeds.map())
     }
 }
 

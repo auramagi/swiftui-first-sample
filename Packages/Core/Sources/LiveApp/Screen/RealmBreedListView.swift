@@ -1,5 +1,5 @@
 //
-//  RealmBreedListScreen.swift
+//  RealmBreedListView.swift
 //
 //
 //  Created by Mikhail Apurin on 2024/02/14.
@@ -10,7 +10,7 @@ import RealmStorage
 import RealmSwift
 import SwiftUI
 
-struct RealmBreedListScreen: View {
+struct RealmBreedListView: View {
     @ObservedResults(BreedListObject.self) public var objects
 
     var body: some View {

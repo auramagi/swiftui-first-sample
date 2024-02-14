@@ -8,7 +8,23 @@
 import Core
 import SwiftUI
 
-struct MockBreedListScreen: View {
+struct BreedListScreen<BreedList: View>: View {
+    let list: BreedList
+
+    @Environment(\.appActions.breedList) private var breeds
+
+    var body: some View {
+        list
+            .task {
+                await breeds.refresh()
+            }
+            .refreshable {
+                await breeds.refresh()
+            }
+    }
+}
+
+struct MockBreedListView: View {
     let state: [BreedListItem]
 
     init(state: [BreedListItem]) {
@@ -26,27 +42,12 @@ struct MockBreedListScreen: View {
     }
 }
 
-struct MockBreedListScreenServiceModifier: ViewModifier {
-    @Environment(\.appActions.breedList) private var breeds
-
-    func body(content: Content) -> some View {
-        content
-            .task {
-                await breeds.refresh()
-            }
-            .refreshable {
-                await breeds.refresh()
-            }
-    }
-}
-
 enum BreedListScreenDestination: Hashable {
     case breedImage(breed: ConcreteBreed)
 }
 
 #Preview {
     WithMockContainer(.app) { container in
-        container.makeBreedListScreen()
-            .modifier(MockBreedListScreenServiceModifier())
+        BreedListScreen(list: container.makeBreedListView())
     }
 }
