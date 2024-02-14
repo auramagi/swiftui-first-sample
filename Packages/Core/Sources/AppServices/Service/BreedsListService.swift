@@ -5,6 +5,7 @@
 //  Created by Mikhail Apurin on 2024-02-12.
 //
 
+import AppUI
 import Core
 import DogAPI
 import RealmStorage
@@ -18,9 +19,12 @@ public final class BreedsListService {
 
     private var realmConfiguration: Realm.Configuration
 
-    public init(api: DogAPIClient, realmConfiguration: Realm.Configuration) {
+    private let errorAlert: AppState.ErrorAlert
+
+    public init(api: DogAPIClient, realmConfiguration: Realm.Configuration, errorAlert: AppState.ErrorAlert) {
         self.api = api
         self.realmConfiguration = realmConfiguration
+        self.errorAlert = errorAlert
     }
     
     public func refresh() async {
@@ -29,8 +33,10 @@ public final class BreedsListService {
             let breeds = try await api.execute(DogAPI.BreedListRequest.Get()).message
             try await save(breeds: breeds.map())
             lastRefresh = .now
+        } catch is CancellationError {
+            // nothing
         } catch {
-            print(error)
+            errorAlert.alert = .init(underlying: error, message: "Could not refresh breeds list")
         }
     }
 

@@ -79,9 +79,9 @@ struct DogImageFavoriteButton: View {
         Button {
             guard let resource else { return }
             if state.isFavorited {
-                try? favorites.unfavorite(resource)
+                favorites.unfavorite(resource)
             } else {
-                try? favorites.favorite(resource)
+                favorites.favorite(resource)
             }
         } label: {
             Label(state.isFavorited ? "Unfavorite" : "Favorite", systemImage: "star")

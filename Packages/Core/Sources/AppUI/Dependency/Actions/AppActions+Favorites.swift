@@ -12,10 +12,10 @@ extension AppActions {
     public struct Favorites {
         public var connect: (FavoriteState, DogImageResource) -> Void = emptyAction()
 
-        public var favorite: (DogImageResource) throws -> Void = emptyAction()
+        public var favorite: (DogImageResource) -> Void = emptyAction()
 
-        public var reset: () throws -> Void = emptyAction()
+        public var reset: () -> Void = emptyAction()
 
-        public var unfavorite: (DogImageResource) throws -> Void = emptyAction()
+        public var unfavorite: (DogImageResource) -> Void = emptyAction()
     }
 }

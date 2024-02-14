@@ -44,9 +44,9 @@ public final class LiveAppContainer: AppContainer {
             session: .shared,
             configuration: .init(baseURL: configuration.apiBaseURL)
         )
-        self.breedListService = .init(api: api, realmConfiguration: .defaultConfiguration)
+        self.breedListService = .init(api: api, realmConfiguration: .defaultConfiguration, errorAlert: app.state.errorAlert)
         self.dogImageService = .init(api: api)
-        self.favoritesService = .init(realmConfiguration: .defaultConfiguration)
+        self.favoritesService = .init(realmConfiguration: .defaultConfiguration, errorState: app.state.errorAlert)
 
         app.actions.breedList.refresh = breedListService.refresh
         app.actions.dogImage.getImage = dogImageService.getImage(_:)

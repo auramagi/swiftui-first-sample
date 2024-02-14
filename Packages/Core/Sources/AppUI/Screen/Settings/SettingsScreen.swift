@@ -27,7 +27,7 @@ struct SettingsScreen: View {
                 }
                 .confirmationDialog("Reset favorites?", isPresented: $isResetFavoritesDialogPresented) {
                     Button("Reset favorites", role: .destructive) {
-                        try? favorites.reset()
+                        favorites.reset()
                     }
                 }
             }

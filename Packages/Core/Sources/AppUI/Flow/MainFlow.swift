@@ -48,6 +48,7 @@ public struct MainFlow<Container: AppContainer>: View {
             }
         }
         .animation(.default, value: didShowWelcome)
+        .withErrorAlertService()
     }
 }
 
@@ -59,6 +60,14 @@ public struct MainFlow<Container: AppContainer>: View {
 
 #Preview("Welcome") {
     WithMockContainer(.app(configuration: .init(didShowWelcome: false))) { container in
+        MainFlow(container: container)
+    }
+}
+
+#Preview("Error") {
+    WithMockContainer(.app {
+        $0.app.state.errorAlert.alert = .init(message: "This is an error")
+    }) { container in
         MainFlow(container: container)
     }
 }

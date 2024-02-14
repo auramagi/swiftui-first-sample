@@ -8,10 +8,13 @@
 import Core
 import SwiftUI
 
-public struct AppState: ViewInjectable {    
+public struct AppState: ViewInjectable {
+    public var errorAlert = ErrorAlert()
+
     public init() { }
     
     public func inject(content: Content) -> some View {
         content
+            .environmentObject(errorAlert)
     }
 }
