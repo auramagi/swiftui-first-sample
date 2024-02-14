@@ -12,7 +12,7 @@ import SwiftUI
 struct DogImageScreen: View {
     let image: DogImage
     
-    @State private var state: LoadingState<DogImage, URL>?
+    @State private var state: LoadingState<DogImage, DogImageResource>?
     
     @Environment(\.appActions.dogImage) private var dogImage
     
@@ -20,8 +20,8 @@ struct DogImageScreen: View {
         VStack {
             Group {
                 switch state?.state {
-                case let .completed(url):
-                    DogImageView(url: url)
+                case let .completed(resource):
+                    DogImageView(resource: resource)
 
                 case .error:
                     TaskFailedView()
@@ -62,36 +62,12 @@ struct DogImageScreen: View {
     }
 }
 
-private struct DogImageView: View {
-    let url: URL
-
-    var body: some View {
-        AsyncImage(url: url) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-
-            case let .success(image):
-                image
-                    .resizable()
-                    .scaledToFit()
-
-            case .failure:
-                TaskFailedView()
-
-            @unknown default:
-                ProgressView()
-            }
-        }
-    }
-}
-
 #Preview {
     DogImageScreen(image: .random)
         .mockContainer(.app { container in
             container.app.actions.dogImage.getImage = { _ in
                 try await Task.sleep(for: .seconds(1))
-                return URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!
+                return .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
             }
         })
 }

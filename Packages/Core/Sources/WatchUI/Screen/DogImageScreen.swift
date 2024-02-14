@@ -6,12 +6,13 @@
 //
 
 import Core
+import CommonUI
 import SwiftUI
 
 struct DogImageScreen: View {
     let image: DogImage
     
-    @State private var state: LoadingState<DogImage, URL>?
+    @State private var state: LoadingState<DogImage, DogImageResource>?
     
     @Environment(\.watchActions.dogImage) private var dogImage
     
@@ -22,15 +23,10 @@ struct DogImageScreen: View {
                 ProgressView()
                 
             case let .completed(url):
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .ignoresSafeArea()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } placeholder: {
-                    ProgressView()
-                }
+                DogImageView(resource: url)
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
             case let .error(error):
                 Text(error.localizedDescription)
@@ -61,7 +57,7 @@ struct DogImageScreen: View {
         .mockContainer(.watch { container in
             container.watch.actions.dogImage.getImage = { _ in
                 try await Task.sleep(for: .seconds(1))
-                return URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!
+                return .remote(URL(string: "https://images.dog.ceo/breeds/shiba/shiba-3i.jpg")!)
             }
         })
 }

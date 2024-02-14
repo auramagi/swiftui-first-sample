@@ -10,6 +10,6 @@ import Foundation
 
 extension AppActions {
     public struct DogImage {
-        public var getImage: (Core.DogImage) async throws -> URL = emptyAction(throwing: .message("Unimplemented"))
+        public var getImage: (Core.DogImage) async throws -> DogImageResource = emptyAction(throwing: .message("Unimplemented"))
     }
 }
