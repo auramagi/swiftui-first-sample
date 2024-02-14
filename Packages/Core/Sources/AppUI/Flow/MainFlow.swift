@@ -24,12 +24,14 @@ public struct MainFlow<Container: AppContainer>: View {
             
             BreedListFlow(container: container)
                 .tabItem {
-                    Label("Breeds", systemImage: "list.bullet")
+                    Label("Breeds", systemImage: "dog")
                 }
             
             Text("🚧 Under construction 🚧")
+
+            SettingsFlow(container: container)
                 .tabItem {
-                    Label("User", systemImage: "person")
+                    Label("Settings", systemImage: "gear")
                 }
         }
     }
