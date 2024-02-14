@@ -11,11 +11,15 @@ let package = Package(
         .library(name: "AppUI", targets: ["AppUI"]),
         .library(name: "WatchUI", targets: ["WatchUI"]),
         .library(name: "DogAPI", targets: ["DogAPI"]),
+        .library(name: "RealmStorage", targets: ["RealmStorage"]),
         .library(name: "CommonServices", targets: ["CommonServices"]),
         .library(name: "AppServices", targets: ["AppServices"]),
         .library(name: "WatchServices", targets: ["WatchServices"]),
         .library(name: "LiveApp", targets: ["LiveApp"]),
         .library(name: "LiveWatch", targets: ["LiveWatch"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/realm/realm-swift", from: "10.47.0"),
     ],
     targets: [
         // MARK: Core
@@ -48,14 +52,22 @@ let package = Package(
             name: "DogAPI",
             dependencies: ["Core"]
         ),
-        
+        .target(
+            name: "RealmStorage",
+            dependencies: [
+                "Core",
+                .product(name: "RealmSwift", package: "realm-swift"),
+                .product(name: "Realm", package: "realm-swift"),
+            ]
+        ),
+
         .target(
             name: "CommonServices", 
             dependencies: ["Core"]
         ),
         .target(
             name: "AppServices",
-            dependencies: ["Core", "CommonServices", "AppUI", "DogAPI"]
+            dependencies: ["Core", "CommonServices", "AppUI", "DogAPI", "RealmStorage"]
         ),
         .target(
             name: "WatchServices",
@@ -66,7 +78,7 @@ let package = Package(
         
         .target(
             name: "LiveApp",
-            dependencies: ["Core", "AppUI", "CommonServices", "AppServices", "DogAPI"]
+            dependencies: ["Core", "AppUI", "CommonServices", "AppServices", "DogAPI", "RealmStorage"]
         ),
         .target(
             name: "LiveWatch",

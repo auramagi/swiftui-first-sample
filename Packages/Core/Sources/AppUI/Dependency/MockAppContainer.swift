@@ -9,6 +9,7 @@ import Core
 import SwiftUI
 
 public final class MockAppContainer: MockDependencyContainer, AppContainer {
+
     public struct Configuration {
         var breeds: BreedList
 
@@ -26,20 +27,23 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
     public let configuration: Configuration
     
     public var app: AppDependency
-    
+
     public init(configuration: Configuration) {
         self.configuration = configuration
         self.app = .init(
             state: .init(),
             actions: .init()
         )
-        app.state.breedList.breeds = configuration.breeds.map()
         if let resource = configuration.defaultImage {
             app.actions.dogImage.getImage = { _ in
                 try? await Task.sleep(for: .seconds(1))
                 return resource
             }
         }
+    }
+
+    public func makeBreedListScreen() -> some View {
+        MockBreedListScreen(state: configuration.breeds.map())
     }
 }
 

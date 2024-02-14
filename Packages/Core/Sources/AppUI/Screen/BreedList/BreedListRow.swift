@@ -8,12 +8,16 @@
 import Core
 import SwiftUI
 
-struct BreedListRow: View {
+public struct BreedListRow: View {
     let item: BreedListItem
 
     @State private var isExpanded = true
 
-    var body: some View {
+    public init(item: BreedListItem) {
+        self.item = item
+    }
+
+    public var body: some View {
         switch item {
         case let .group(breed, subBreeds):
             DisclosureGroup(isExpanded: $isExpanded) {

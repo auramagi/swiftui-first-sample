@@ -12,11 +12,15 @@ public enum BreedListItem: Hashable {
 
     case concrete(ConcreteBreed)
 
-    public var breed: Breed {
+    public var concreteBreed: ConcreteBreed {
         switch self {
         case let .group(breed, _), let .concrete(breed):
-            return breed.breed
+            return breed
         }
+    }
+
+    public var breed: Breed {
+        concreteBreed.breed
     }
 }
 

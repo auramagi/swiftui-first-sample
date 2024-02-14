@@ -10,6 +10,9 @@ import SwiftUI
 
 public protocol AppContainer: DependencyContainer {
     var app: AppDependency { get }
+
+    associatedtype BreedListScreen: View
+    func makeBreedListScreen() -> BreedListScreen
 }
 
 extension AppContainer {

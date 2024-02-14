@@ -13,7 +13,8 @@ struct BreedListFlow<Container: AppContainer>: View {
     
     var body: some View {
         NavigationStack {
-            BreedListScreen()
+            container.makeBreedListScreen()
+                .modifier(MockBreedListScreenServiceModifier())
                 .dependency(container)
                 .navigationTitle("Breeds")
                 .navigationDestination(for: BreedListScreenDestination.self) { destination in

@@ -21,7 +21,7 @@ struct WatchDogs_Watch_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AppFlow(container: container)
+            MainFlow(container: container)
         }
     }
 }

@@ -12,13 +12,10 @@ import Foundation
 public final class BreedsListService {
     private let api: DogAPIClient
     
-    private let state: BreedListState
-    
     private var lastRefresh = Date.distantPast
     
-    public init(api: DogAPIClient, state: BreedListState) {
+    public init(api: DogAPIClient) {
         self.api = api
-        self.state = state
     }
     
     public func refresh() async {
@@ -26,7 +23,7 @@ public final class BreedsListService {
         do {
             let breeds = try await api.execute(DogAPI.BreedListRequest.Get())
             await MainActor.run {
-                state.breeds = breeds.message.map()
+//                state.breeds = breeds.message.map()
             }
             lastRefresh = .now
         } catch {

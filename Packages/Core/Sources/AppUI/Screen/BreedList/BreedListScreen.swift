@@ -8,25 +8,35 @@
 import Core
 import SwiftUI
 
-struct BreedListScreen: View {
-    @EnvironmentObject private var breedsState: AppState.BreedList
-    
-    @Environment(\.appActions.breedList) private var breeds
+struct MockBreedListScreen: View {
+    let state: [BreedListItem]
+
+    init(state: [BreedListItem]) {
+        self.state = state
+    }
 
     var body: some View {
         List {
             Section {
-                ForEach(breedsState.breeds, id: \.self) { item in
+                ForEach(state, id: \.self) { item in
                     BreedListRow(item: item)
                 }
             }
         }
-        .task {
-            await breeds.refresh()
-        }
-        .refreshable {
-            await breeds.refresh()
-        }
+    }
+}
+
+struct MockBreedListScreenServiceModifier: ViewModifier {
+    @Environment(\.appActions.breedList) private var breeds
+
+    func body(content: Content) -> some View {
+        content
+            .task {
+                await breeds.refresh()
+            }
+            .refreshable {
+                await breeds.refresh()
+            }
     }
 }
 
@@ -35,6 +45,8 @@ enum BreedListScreenDestination: Hashable {
 }
 
 #Preview {
-    BreedListScreen()
-        .mockContainer(.app)
+    WithMockContainer(.app) { container in
+        container.makeBreedListScreen()
+            .modifier(MockBreedListScreenServiceModifier())
+    }
 }

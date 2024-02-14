@@ -1,5 +1,5 @@
 //
-//  AppFlow.swift
+//  MainFlow.swift
 //
 //
 //  Created by Mikhail Apurin on 2024-02-14.
@@ -9,7 +9,7 @@ import Core
 import PreviewAssets
 import SwiftUI
 
-public struct AppFlow<Container: WatchContainer>: View {
+public struct MainFlow<Container: WatchContainer>: View {
     let container: Container
     
     public init(container: Container) {
@@ -28,6 +28,6 @@ public struct AppFlow<Container: WatchContainer>: View {
             defaultImage: .local(PreviewAsset.Image.kurosuke01)
         )
     )) { container in
-        AppFlow(container: container)
+        MainFlow(container: container)
     }
 }
