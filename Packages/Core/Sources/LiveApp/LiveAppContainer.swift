@@ -42,7 +42,7 @@ public final class LiveAppContainer: AppContainer {
             session: .shared,
             configuration: .init(baseURL: configuration.apiBaseURL)
         )
-        self.breedListService = .init(api: api)
+        self.breedListService = .init(api: api, realm: .defaultConfiguration)
         self.dogImageService = .init(api: api)
         
         app.actions.breedList.refresh = breedListService.refresh
