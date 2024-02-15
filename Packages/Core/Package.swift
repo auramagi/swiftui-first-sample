@@ -46,7 +46,7 @@ let package = Package(
             dependencies: ["Core", "PreviewAssets", "CommonUI"]
         ),
         
-        // MARK: Services
+        // MARK: Infrastructure
         
         .target(
             name: "DogAPI",
@@ -60,6 +60,8 @@ let package = Package(
                 .product(name: "Realm", package: "realm-swift"),
             ]
         ),
+
+        // MARK: Services
 
         .target(
             name: "CommonServices", 
