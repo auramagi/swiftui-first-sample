@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WelcomeScreen: View {
     struct Actions {
-        var dismiss: () -> Void
+        var dismiss: () -> Void = emptyAction()
     }
 
     let actions: Actions
@@ -28,4 +28,9 @@ struct WelcomeScreen: View {
             .buttonStyle(.borderedProminent)
         }
     }
+}
+
+#Preview {
+    WelcomeScreen(actions: .init())
+        .mockContainer(.app)
 }

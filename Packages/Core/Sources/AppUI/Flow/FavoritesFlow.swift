@@ -13,7 +13,7 @@ struct FavoritesFlow<Container: AppContainer>: View {
 
     var body: some View {
         NavigationStack {
-            FavoritesScreen(grid: container.makeFavoritesGrid())
+            FavoritesScreen(factory: container.makeFavoritesScreenFactory())
                 .navigationTitle("Favorites")
         }
     }

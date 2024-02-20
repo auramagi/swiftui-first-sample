@@ -11,11 +11,11 @@ import SwiftUI
 public protocol AppContainer: DependencyContainer {
     var app: AppDependency { get }
 
-    associatedtype BreedListView: View
-    @ViewBuilder func makeBreedListView() -> BreedListView
+    associatedtype BreedListScreenFactory: AppUI.BreedListScreenFactory
+    func makeBreedListScreenFactory() -> BreedListScreenFactory
 
-    associatedtype FavoritesGrid: View
-    @ViewBuilder func makeFavoritesGrid() -> FavoritesGrid
+    associatedtype FavoritesScreenFactory: AppUI.FavoritesScreenFactory
+    func makeFavoritesScreenFactory() -> FavoritesScreenFactory
 }
 
 extension AppContainer {

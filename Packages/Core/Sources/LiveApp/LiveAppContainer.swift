@@ -9,12 +9,15 @@ import AppServices
 import AppUI
 import CommonServices
 import DogAPI
+import RealmSwift
 import SwiftUI
 
 public final class LiveAppContainer: AppContainer {
     public struct Configuration {
         let apiBaseURL: URL
-        
+
+        let realm = Realm.Configuration.defaultConfiguration
+
         public init(
             apiBaseURL: URL
         ) {
@@ -44,9 +47,9 @@ public final class LiveAppContainer: AppContainer {
             session: .shared,
             configuration: .init(baseURL: configuration.apiBaseURL)
         )
-        self.breedListService = .init(api: api, realmConfiguration: .defaultConfiguration, errorAlert: app.state.errorAlert)
+        self.breedListService = .init(api: api, realmConfiguration: configuration.realm, errorAlert: app.state.errorAlert)
         self.dogImageService = .init(api: api)
-        self.favoritesService = .init(realmConfiguration: .defaultConfiguration, errorState: app.state.errorAlert)
+        self.favoritesService = .init(realmConfiguration: configuration.realm, errorState: app.state.errorAlert)
 
         app.actions.breedList.refresh = breedListService.refresh
         app.actions.dogImage.getImage = dogImageService.getImage(_:)
@@ -56,11 +59,11 @@ public final class LiveAppContainer: AppContainer {
         app.actions.favorites.unfavorite = favoritesService.unfavorite(resource:)
     }
 
-    public func makeBreedListView() -> some View {
-        RealmBreedListView()
+    public func makeBreedListScreenFactory() -> some BreedListScreenFactory {
+        RealmBreedListScreenFactory(realmConfiguration: configuration.realm)
     }
 
-    public func makeFavoritesGrid() -> some View {
-        RealmFavoritesGridView()
+    public func makeFavoritesScreenFactory() -> some FavoritesScreenFactory {
+        RealmFavoritesScreenFactory(realmConfiguration: configuration.realm)
     }
 }

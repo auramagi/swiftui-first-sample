@@ -62,20 +62,12 @@ public final class MockAppContainer: MockDependencyContainer, AppContainer {
             .defaultAppStorage(defaults)
     }
 
-    public func makeBreedListView() -> some View {
-        MockBreedListView(state: configuration.breeds.map())
+    public func makeBreedListScreenFactory() -> some BreedListScreenFactory {
+        MockBreedListScreenFactory(breeds: configuration.breeds.map())
     }
 
-    public func makeFavoritesGrid() -> some View {
-        if configuration.favorites.isEmpty {
-            FavoritesEmptyView()
-        } else {
-            FavoritesGridContent {
-                ForEach(configuration.favorites) { item in
-                    FavoritesGridItem(item: item)
-                }
-            }
-        }
+    public func makeFavoritesScreenFactory() -> some FavoritesScreenFactory {
+        MockFavoritesScreenFactory(items: configuration.favorites)
     }
 }
 
