@@ -6,6 +6,7 @@
 //
 
 import Core
+import PreviewAssets
 import SwiftUI
 
 public final class MockAppContainer: MockDependencyContainer, AppContainer {

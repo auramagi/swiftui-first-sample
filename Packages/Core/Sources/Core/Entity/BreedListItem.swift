@@ -40,9 +40,3 @@ extension BreedList {
         .sorted { $0.breed.localizedStandardCompare($1.breed) == .orderedAscending }
     }
 }
-
-extension [BreedListItem] {
-    public static func mock(_ list: BreedList = .mock) -> Self {
-        list.map()
-    }
-}

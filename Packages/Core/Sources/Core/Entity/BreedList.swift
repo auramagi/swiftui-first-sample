@@ -8,18 +8,3 @@
 import Foundation
 
 public typealias BreedList = [Breed: [SubBreed]]
-
-extension BreedList {
-    public static var mock: Self {
-        [
-            "affenpinscher": [],
-            "african": [],
-            "airedale": [],
-            "akita": [],
-            "appenzeller": [],
-            "australian": [
-                "shepherd"
-            ],
-        ]
-    }
-}
