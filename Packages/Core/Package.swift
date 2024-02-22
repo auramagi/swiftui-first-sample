@@ -23,16 +23,18 @@ let package = Package(
     ],
     targets: [
         // MARK: Core
+
         .target(
             name: "Core"
         ),
+
+        // MARK: UI
+
         .target(
             name: "PreviewAssets",
+            dependencies: ["Core"],
             exclude: ["_PreviewAssets.xcassets"]
         ),
-        
-        // MARK: UI
-        
         .target(
             name: "CommonUI",
             dependencies: ["Core", "PreviewAssets"]
