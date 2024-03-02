@@ -1,4 +1,8 @@
-# SwiftUI MV Architecture
+# SwiftUI-First Architecture Demo
+
+This repository showcases the architecture I use to structure my apps. Check out the article for more detail:
+
+- [SwiftUI-First Architecture](https://apurin.me/articles/swiftui-first/)
 
 ## Preview assets
 
