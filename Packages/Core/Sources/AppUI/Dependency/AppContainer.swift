@@ -26,6 +26,5 @@ extension AppContainer {
 
     public var app: some View {
         MainFlow(container: self)
-            .dependency(self)
     }
 }

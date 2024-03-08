@@ -11,6 +11,15 @@ import SwiftUI
 struct SettingsFlow<Container: AppContainer>: View {
     let container: Container
 
+    var body: some View {
+        _Content(flow: self)
+            .dependency(container)
+    }
+}
+
+private struct _Content<Container: AppContainer>: View {
+    let flow: SettingsFlow<Container>
+
     @State private var isShowingWelcome = false
 
     var body: some View {
@@ -18,7 +27,6 @@ struct SettingsFlow<Container: AppContainer>: View {
             SettingsScreen(actions: .init(
                 showWelcome: { isShowingWelcome = true }
             ))
-            .dependency(container)
             .navigationTitle("Settings")
         }
         .sheet(isPresented: $isShowingWelcome) {

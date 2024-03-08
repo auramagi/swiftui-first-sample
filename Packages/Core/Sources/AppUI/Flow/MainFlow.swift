@@ -11,32 +11,37 @@ import SwiftUI
 struct MainFlow<Container: AppContainer>: View {
     let container: Container
 
-    @AppStorage(SettingsKey.Welcome.didShow) private var didShowWelcome = false
-
-    public init(container: Container) {
-        self.container = container
+    var body: some View {
+        _Content(flow: self)
+            .dependency(container)
     }
+}
+
+private struct _Content<Container: AppContainer>: View {
+    let flow: MainFlow<Container>
+
+    @AppStorage(SettingsKey.Welcome.didShow) private var didShowWelcome = false
 
     var body: some View {
         ZStack {
             if didShowWelcome {
                 TabView {
-                    RandomImageFlow(container: container)
+                    RandomImageFlow(container: flow.container)
                         .tabItem {
                             Label("Random", systemImage: "photo")
                         }
 
-                    BreedListFlow(container: container)
+                    BreedListFlow(container: flow.container)
                         .tabItem {
                             Label("Breeds", systemImage: "dog")
                         }
 
-                    FavoritesFlow(container: container)
+                    FavoritesFlow(container: flow.container)
                         .tabItem {
                             Label("Favorites", systemImage: "star")
                         }
 
-                    SettingsFlow(container: container)
+                    SettingsFlow(container: flow.container)
                         .tabItem {
                             Label("Settings", systemImage: "gear")
                         }
