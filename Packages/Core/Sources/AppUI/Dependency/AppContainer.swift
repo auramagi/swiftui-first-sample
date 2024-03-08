@@ -23,4 +23,9 @@ extension AppContainer {
         content
             .dependency(app)
     }
+
+    public var app: some View {
+        MainFlow(container: self)
+            .dependency(self)
+    }
 }

@@ -8,7 +8,7 @@
 import Core
 import SwiftUI
 
-public struct MainFlow<Container: AppContainer>: View {
+struct MainFlow<Container: AppContainer>: View {
     let container: Container
 
     @AppStorage(SettingsKey.Welcome.didShow) private var didShowWelcome = false
@@ -17,7 +17,7 @@ public struct MainFlow<Container: AppContainer>: View {
         self.container = container
     }
 
-    public var body: some View {
+    var body: some View {
         ZStack {
             if didShowWelcome {
                 TabView {

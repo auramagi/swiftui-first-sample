@@ -22,8 +22,7 @@ struct DogsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainFlow(container: container)
-                .dependency(container)
+            container.app
         }
     }
 }
