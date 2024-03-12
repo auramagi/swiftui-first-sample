@@ -9,16 +9,20 @@ import Core
 import PreviewAssets
 import SwiftUI
 
-public struct MainFlow<Container: WatchContainer>: View {
+struct MainFlow<Container: WatchContainer>: View {
     let container: Container
-    
-    public init(container: Container) {
-        self.container = container
+
+    var body: some View {
+        _Content(flow: self)
+            .dependency(container)
     }
+}
+
+private struct _Content<Container: WatchContainer>: View {
+    let flow: MainFlow<Container>
     
     public var body: some View {
         DogImageScreen(image: .random)
-            .dependency(container)
     }
 }
 

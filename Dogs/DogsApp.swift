@@ -6,7 +6,6 @@
 //
 
 import Core
-import AppUI
 import LiveApp
 import SwiftUI
 

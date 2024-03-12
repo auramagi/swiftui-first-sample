@@ -17,4 +17,8 @@ extension WatchContainer {
         content
             .dependency(watch)
     }
+
+    public var watch: some View {
+        MainFlow(container: self)
+    }
 }
