@@ -10,7 +10,7 @@ import SwiftUI
 import WatchUI
 
 @main
-struct WatchDogs_Watch_AppApp: App {
+struct WatchDogsApp: App {
     static var configuration: LiveWatchContainer.Configuration {
         .init(
             apiBaseURL: .init(string: "https://dog.ceo/api")!
