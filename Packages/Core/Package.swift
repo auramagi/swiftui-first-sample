@@ -59,7 +59,6 @@ let package = Package(
             dependencies: [
                 "Core",
                 .product(name: "RealmSwift", package: "realm-swift"),
-                .product(name: "Realm", package: "realm-swift"),
             ]
         ),
 
