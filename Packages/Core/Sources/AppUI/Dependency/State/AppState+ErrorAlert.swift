@@ -9,7 +9,7 @@ import Core
 import Foundation
 
 extension AppState {
-    public final class ErrorAlert: ObservableObject {
+    @MainActor public final class ErrorAlert: ObservableObject {
         @Published public var alert: DisplayableError?
 
         public init() { }

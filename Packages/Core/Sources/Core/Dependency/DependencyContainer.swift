@@ -7,4 +7,4 @@
 
 import Foundation
 
-public protocol DependencyContainer: AnyObject, ViewInjectable { }
+@MainActor public protocol DependencyContainer: AnyObject, ViewInjectable { }

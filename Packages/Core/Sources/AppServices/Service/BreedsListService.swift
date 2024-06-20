@@ -12,12 +12,12 @@ import RealmStorage
 import RealmSwift
 import Foundation
 
-public final class BreedsListService {
+@MainActor public final class BreedsListService: Sendable {
     private let api: DogAPIClient
     
     private var lastRefresh = Date.distantPast
 
-    private var realmConfiguration: Realm.Configuration
+    private let realmConfiguration: Realm.Configuration
 
     private let errorAlert: AppState.ErrorAlert
 
@@ -31,7 +31,7 @@ public final class BreedsListService {
         guard Date.now.timeIntervalSince(lastRefresh) > 60 else { return } // Throttle reloads for 60s
         do {
             let breeds = try await api.execute(DogAPI.BreedListRequest.Get()).message
-            try await save(breeds: breeds.map())
+            try save(breeds: breeds.map())
             lastRefresh = .now
         } catch is CancellationError {
             // nothing
@@ -40,7 +40,7 @@ public final class BreedsListService {
         }
     }
 
-    @MainActor func save(breeds: [BreedListItem]) throws {
+    func save(breeds: [BreedListItem]) throws {
         let realm = try Realm(configuration: realmConfiguration)
         try realm.write {
             let list = realm.objects(BreedListObject.self).first ?? realm.create(BreedListObject.self)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public protocol MockDependencyContainer: DependencyContainer { }
+@MainActor public protocol MockDependencyContainer: DependencyContainer { }
 
 public struct WithMockContainer<Container: MockDependencyContainer, Content: View>: View {
     private class Storage: ObservableObject {

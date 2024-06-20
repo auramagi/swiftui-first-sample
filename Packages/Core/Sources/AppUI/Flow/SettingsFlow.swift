@@ -24,7 +24,7 @@ private struct _Content<Container: AppContainer>: View {
 
     var body: some View {
         NavigationStack {
-            SettingsScreen(actions: .init(
+            SettingsScreen(flow: .init(
                 showWelcome: { isShowingWelcome = true }
             ))
             .navigationTitle("Settings")

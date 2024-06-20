@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ConcreteBreed: Hashable {
+public struct ConcreteBreed: Sendable, Hashable {
     public let breed: Breed
 
     public let subBreed: SubBreed?

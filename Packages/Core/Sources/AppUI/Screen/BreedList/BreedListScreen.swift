@@ -12,7 +12,7 @@ import SwiftUI
 struct BreedListScreen<Factory: BreedListScreenFactory>: View {
     let factory: Factory
 
-    @Environment(\.appActions.breedList) private var breeds
+    @Environment(\.appActions) private var actions
 
     var body: some View {
         WithProperty(factory.makeScreenData()) { screenData in
@@ -24,10 +24,10 @@ struct BreedListScreen<Factory: BreedListScreenFactory>: View {
                 }
             }
             .task {
-                await breeds.refresh()
+                await actions.breedList.refresh()
             }
             .refreshable {
-                await breeds.refresh()
+                await actions.breedList.refresh()
             }
         }
         .dependency(factory)
@@ -36,12 +36,12 @@ struct BreedListScreen<Factory: BreedListScreenFactory>: View {
 
 // MARK: Factory
 
-public protocol BreedListScreenFactory: ViewInjectable {
+@MainActor public protocol BreedListScreenFactory: ViewInjectable {
     associatedtype ScreenData: BreedListScreenData
     func makeScreenData() -> ScreenData
 }
 
-public protocol BreedListScreenData: DynamicProperty {
+@MainActor public protocol BreedListScreenData: DynamicProperty {
     typealias Breed = Breeds.Element
 
     associatedtype Breeds: RandomAccessCollection where Breed: Identifiable

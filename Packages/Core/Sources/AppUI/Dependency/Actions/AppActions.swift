@@ -8,7 +8,7 @@
 import Core
 import SwiftUI
 
-public struct AppActions: ViewInjectable {
+@MainActor public struct AppActions: ViewInjectable {
     struct Key: EnvironmentKey {
         static let defaultValue = AppActions()
     }
@@ -19,7 +19,7 @@ public struct AppActions: ViewInjectable {
     
     public var favorites = Favorites()
 
-    public init() { }
+    nonisolated public init() { }
     
     public func inject(content: Content) -> some View {
         content

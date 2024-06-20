@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public protocol Dependency: ViewInjectable {
+@MainActor public protocol Dependency: ViewInjectable {
     associatedtype State: ViewInjectable
     
     associatedtype Actions: ViewInjectable

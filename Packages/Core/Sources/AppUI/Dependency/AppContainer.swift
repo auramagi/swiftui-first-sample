@@ -8,7 +8,7 @@
 import Core
 import SwiftUI
 
-public protocol AppContainer: DependencyContainer {
+@MainActor public protocol AppContainer: DependencyContainer {
     var app: AppDependency { get }
 
     associatedtype BreedListScreenFactory: AppUI.BreedListScreenFactory

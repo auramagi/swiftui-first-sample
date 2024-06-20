@@ -9,7 +9,9 @@ import Core
 import Foundation
 
 extension WatchActions {
-    public struct DogImage {
+    @MainActor public struct DogImage {
         public var getImage: (Core.DogImage) async throws -> DogImageResource = emptyAction(throwing: .message("Unimplemented"))
+
+        nonisolated init() { }
     }
 }

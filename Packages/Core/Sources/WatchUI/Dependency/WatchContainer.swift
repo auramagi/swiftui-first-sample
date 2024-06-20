@@ -8,7 +8,7 @@
 import Core
 import SwiftUI
 
-public protocol WatchContainer: DependencyContainer {
+@MainActor public protocol WatchContainer: DependencyContainer {
     var watch: WatchDependency { get }
 }
 

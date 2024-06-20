@@ -9,7 +9,9 @@ import Core
 import Foundation
 
 extension AppActions {
-    public struct BreedList {
+    @MainActor public struct BreedList {
         public var refresh: () async -> Void = emptyAction()
+
+        nonisolated init() { }
     }
 }

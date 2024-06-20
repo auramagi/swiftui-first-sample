@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum DogImageResource {
+public enum DogImageResource: Sendable {
     case local(Image)
     
     case remote(URL)

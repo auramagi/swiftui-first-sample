@@ -10,6 +10,7 @@ import LiveApp
 import SwiftUI
 
 @main
+@MainActor
 struct DogsApp: App {
     static var configuration: LiveAppContainer.Configuration {
         .init(

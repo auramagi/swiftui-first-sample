@@ -9,7 +9,7 @@ import Core
 import DogAPI
 import Foundation
 
-public final class DogImageService {
+@MainActor public final class DogImageService {
     private let api: DogAPIClient
     
     public init(api: DogAPIClient) {

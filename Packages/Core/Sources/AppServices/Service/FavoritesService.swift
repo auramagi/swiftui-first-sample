@@ -12,7 +12,7 @@ import Foundation
 import RealmStorage
 import RealmSwift
 
-public final class FavoritesService {
+@MainActor public final class FavoritesService: Sendable {
     let realmConfiguration: Realm.Configuration
 
     let errorAlert: AppState.ErrorAlert

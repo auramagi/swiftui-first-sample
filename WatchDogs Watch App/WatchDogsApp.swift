@@ -10,6 +10,7 @@ import SwiftUI
 import WatchUI
 
 @main
+@MainActor
 struct WatchDogsApp: App {
     static var configuration: LiveWatchContainer.Configuration {
         .init(

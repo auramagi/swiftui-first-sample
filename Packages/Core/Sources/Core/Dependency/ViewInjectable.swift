@@ -12,7 +12,7 @@ public protocol ViewInjectable {
     
     associatedtype InjectedBody: View
     
-    func inject(content: Content) -> InjectedBody
+    @MainActor func inject(content: Content) -> InjectedBody
 }
 
 public struct ViewDependencyModifier<D: ViewInjectable>: ViewModifier {

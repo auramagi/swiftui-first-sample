@@ -8,15 +8,15 @@
 import Core
 import SwiftUI
 
-public struct WatchActions: ViewInjectable {
+@MainActor public struct WatchActions: ViewInjectable {
     struct Key: EnvironmentKey {
         static let defaultValue = WatchActions()
     }
     
     public var dogImage = DogImage()
     
-    public init() { }
-    
+    nonisolated public init() { }
+
     public func inject(content: Content) -> some View {
         content
             .environment(\.watchActions, self)

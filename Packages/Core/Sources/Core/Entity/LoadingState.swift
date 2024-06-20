@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct LoadingState<Input, Value>: Identifiable {
+public struct LoadingState<Input: Sendable, Value>: Identifiable {
     public enum State {
         case inProgress
         
         case completed(Value)
         
-        case error(Error)
+        case error(any Error)
     }
 
     public let id = UUID()

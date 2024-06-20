@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DogAPIResponse<Message: Decodable>: Decodable {
+public struct DogAPIResponse<Message: Sendable & Decodable>: Sendable, Decodable {
     public let message: Message
 
     public let status: String

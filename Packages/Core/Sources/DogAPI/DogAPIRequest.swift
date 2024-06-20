@@ -7,8 +7,8 @@
 
 import Foundation
 
-public protocol DogAPIRequest {
-    associatedtype Message: Decodable
+public protocol DogAPIRequest: Sendable {
+    associatedtype Message: Decodable & Sendable
 
     typealias Response = DogAPIResponse<Message>
 

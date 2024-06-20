@@ -8,8 +8,8 @@
 import Core
 import Foundation
 
-public final class DogAPIClient {
-    public struct Configuration {
+public final class DogAPIClient: Sendable {
+    public struct Configuration: Sendable {
         let baseURL: URL
 
         public init(baseURL: URL) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FavoritesItem: Identifiable {
+public struct FavoritesItem: Sendable, Identifiable {
     public let id: UUID
 
     public let resource: DogImageResource

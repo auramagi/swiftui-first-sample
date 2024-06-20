@@ -15,8 +15,8 @@ struct DogImageScreen: View {
     
     @State private var state: LoadingState<DogImage, DogImageResource>?
     
-    @Environment(\.watchActions.dogImage) private var dogImage
-    
+    @Environment(\.watchActions) private var actions
+
     var body: some View {
         Group {
             switch state?.state {
@@ -39,7 +39,7 @@ struct DogImageScreen: View {
             if let state {
                 guard !state.didFinish else { return } // Don't reload on each appearance
                 do {
-                    let url = try await dogImage.getImage(state.input)
+                    let url = try await actions.dogImage.getImage(state.input)
                     self.state?.state = .completed(url)
                 } catch is CancellationError {
                     

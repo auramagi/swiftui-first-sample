@@ -8,7 +8,7 @@
 import Core
 import SwiftUI
 
-public struct AppState: ViewInjectable {
+@MainActor public struct AppState: ViewInjectable {
     public var errorAlert = ErrorAlert()
 
     public init() { }

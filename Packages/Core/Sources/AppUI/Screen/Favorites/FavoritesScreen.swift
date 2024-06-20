@@ -52,12 +52,12 @@ struct FavoritesScreen<Factory: FavoritesScreenFactory>: View {
 
 // MARK: Factory
 
-public protocol FavoritesScreenFactory: ViewInjectable {
+@MainActor public protocol FavoritesScreenFactory: ViewInjectable {
     associatedtype ScreenData: FavoritesScreenData
     func makeScreenData() -> ScreenData
 }
 
-public protocol FavoritesScreenData: DynamicProperty {
+@MainActor public protocol FavoritesScreenData: DynamicProperty {
     typealias Item = Items.Element
 
     associatedtype Items: RandomAccessCollection where Item: Identifiable
@@ -107,7 +107,7 @@ struct FavoritesGridItem: View {
 
 // MARK: Preview
 
-private let previewFavorites = [
+@MainActor private let previewFavorites = [
     FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
     FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),
     FavoritesItem(id: .init(), resource: .local(PreviewAsset.Image.kurosuke01)),

@@ -15,8 +15,8 @@ struct DogImageScreen: View {
     
     @State private var state: LoadingState<DogImage, DogImageResource>?
     
-    @Environment(\.appActions.dogImage) private var dogImage
-    
+    @Environment(\.appActions) private var actions
+
     var body: some View {
         VStack {
             Group {
@@ -51,7 +51,7 @@ struct DogImageScreen: View {
             if let state {
                 guard !state.didFinish else { return } // Don't reload on each appearance
                 do {
-                    let url = try await dogImage.getImage(state.input)
+                    let url = try await actions.dogImage.getImage(state.input)
                     self.state?.state = .completed(url)
                 } catch is CancellationError {
                     
@@ -73,15 +73,15 @@ struct DogImageFavoriteButton: View {
 
     @StateObject private var state = FavoriteState()
 
-    @Environment(\.appActions.favorites) private var favorites
+    @Environment(\.appActions) private var actions
 
     var body: some View {
         Button {
             guard let resource else { return }
             if state.isFavorited {
-                favorites.unfavorite(resource)
+                actions.favorites.unfavorite(resource)
             } else {
-                favorites.favorite(resource)
+                actions.favorites.favorite(resource)
             }
         } label: {
             Label(state.isFavorited ? "Unfavorite" : "Favorite", systemImage: "star")
@@ -93,7 +93,7 @@ struct DogImageFavoriteButton: View {
         .padding()
         .onFirstAppear {
             guard let resource else { return }
-            favorites.connect(state, resource)
+            actions.favorites.connect(state, resource)
         }
     }
 }

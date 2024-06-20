@@ -9,7 +9,7 @@ import Core
 import Foundation
 
 extension AppActions {
-    public struct Favorites {
+    @MainActor public struct Favorites {
         public var connect: (FavoriteState, DogImageResource) -> Void = emptyAction()
 
         public var favorite: (DogImageResource) -> Void = emptyAction()
@@ -17,5 +17,7 @@ extension AppActions {
         public var reset: () -> Void = emptyAction()
 
         public var unfavorite: (DogImageResource) -> Void = emptyAction()
+
+        nonisolated init() { }
     }
 }

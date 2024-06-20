@@ -34,7 +34,7 @@ public func emptyAction<each Input, Output>(returning defaultValue: @autoclosure
 }
 
 /// Empty action to be used as a default when initializing closures. When called outputs a reminder to set a proper closure and throws the provided error.
-public func emptyAction<each Input, Output>(throwing error: @autoclosure @escaping () -> Error, file: StaticString = #fileID, line: UInt = #line) -> (repeat each Input) throws -> Output {
+public func emptyAction<each Input, Output>(throwing error: @autoclosure @escaping () -> any Error, file: StaticString = #fileID, line: UInt = #line) -> (repeat each Input) throws -> Output {
     { (_: repeat each Input) throws -> Output in
         log.info("Executing empty action (defined in \(file):\(line))")
         throw error()

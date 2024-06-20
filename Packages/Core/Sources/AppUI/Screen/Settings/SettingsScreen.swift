@@ -9,15 +9,15 @@ import Core
 import SwiftUI
 
 struct SettingsScreen: View {
-    struct Actions {
+    struct Flow {
         var showWelcome: () -> Void = emptyAction()
     }
 
-    let actions: Actions
+    let flow: Flow
 
     @State private var isResetFavoritesDialogPresented = false
 
-    @Environment(\.appActions.favorites) private var favorites
+    @Environment(\.appActions) private var actions
 
     var body: some View {
         List {
@@ -27,7 +27,7 @@ struct SettingsScreen: View {
                 }
                 .confirmationDialog("Reset favorites?", isPresented: $isResetFavoritesDialogPresented) {
                     Button("Reset favorites", role: .destructive) {
-                        favorites.reset()
+                        actions.favorites.reset()
                     }
                 }
             }
@@ -36,7 +36,7 @@ struct SettingsScreen: View {
                 LabeledContent("Version", value: version)
 
                 Button("Welcome screen") {
-                    actions.showWelcome()
+                    flow.showWelcome()
                 }
             }
         }
@@ -52,6 +52,6 @@ struct SettingsScreen: View {
 }
 
 #Preview {
-    SettingsScreen(actions: .init())
+    SettingsScreen(flow: .init())
         .mockContainer(.app)
 }
