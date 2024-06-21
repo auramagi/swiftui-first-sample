@@ -30,7 +30,7 @@ private struct _Content<Container: AppContainer>: View {
             .navigationTitle("Settings")
         }
         .sheet(isPresented: $isShowingWelcome) {
-            WelcomeScreen(actions: .init(
+            WelcomeScreen(flow: .init(
                 dismiss: { isShowingWelcome = false }
             ))
         }

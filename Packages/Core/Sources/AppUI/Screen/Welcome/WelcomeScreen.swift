@@ -9,11 +9,11 @@ import Core
 import SwiftUI
 
 struct WelcomeScreen: View {
-    struct Actions {
+    struct Flow {
         var dismiss: () -> Void = emptyAction()
     }
 
-    let actions: Actions
+    let flow: Flow
 
     var body: some View {
         VStack(spacing: 64) {
@@ -23,7 +23,7 @@ struct WelcomeScreen: View {
             Text("Thank you for installing this app!")
 
             Button("Show me dogs") {
-                actions.dismiss()
+                flow.dismiss()
             }
             .buttonStyle(.borderedProminent)
         }
@@ -31,6 +31,6 @@ struct WelcomeScreen: View {
 }
 
 #Preview {
-    WelcomeScreen(actions: .init())
+    WelcomeScreen(flow: .init())
         .mockContainer(.app)
 }

@@ -47,7 +47,7 @@ private struct _Content<Container: AppContainer>: View {
                         }
                 }
             } else {
-                WelcomeScreen(actions: .init(
+                WelcomeScreen(flow: .init(
                     dismiss: { didShowWelcome = true }
                 ))
             }
