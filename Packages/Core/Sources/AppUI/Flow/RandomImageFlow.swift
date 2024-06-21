@@ -12,18 +12,20 @@ struct RandomImageFlow<Container: AppContainer>: View {
     let container: Container
 
     var body: some View {
-        _Content(flow: self)
+        Content(flow: self)
             .dependency(container)
     }
 }
 
-private struct _Content<Container: AppContainer>: View {
-    let flow: RandomImageFlow<Container>
+extension RandomImageFlow {
+    private struct Content: View {
+        let flow: RandomImageFlow
 
-    var body: some View {
-        NavigationStack {
-            DogImageScreen(image: .random)
-                .navigationTitle("Random Dog")
+        var body: some View {
+            NavigationStack {
+                DogImageScreen(image: .random)
+                    .navigationTitle("Random Dog")
+            }
         }
     }
 }

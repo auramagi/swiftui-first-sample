@@ -12,25 +12,27 @@ struct BreedListFlow<Container: AppContainer>: View {
     let container: Container
     
     var body: some View {
-        _Content(flow: self)
+        Content(flow: self)
             .dependency(container)
     }
 }
 
-private struct _Content<Container: AppContainer>: View {
-    let flow: BreedListFlow<Container>
+extension BreedListFlow {
+    private struct Content: View {
+        let flow: BreedListFlow
 
-    var body: some View {
-        NavigationStack {
-            BreedListScreen(factory: flow.container.makeBreedListScreenFactory())
-                .navigationTitle("Breeds")
-                .navigationDestination(for: BreedListScreenDestination.self) { destination in
-                    switch destination {
-                    case let .breedImage(breed):
-                        DogImageScreen(image: .breed(breed))
-                            .navigationTitle(breed.formatted(.breedName))
+        var body: some View {
+            NavigationStack {
+                BreedListScreen(factory: flow.container.makeBreedListScreenFactory())
+                    .navigationTitle("Breeds")
+                    .navigationDestination(for: BreedListScreenDestination.self) { destination in
+                        switch destination {
+                        case let .breedImage(breed):
+                            DogImageScreen(image: .breed(breed))
+                                .navigationTitle(breed.formatted(.breedName))
+                        }
                     }
-                }
+            }
         }
     }
 }

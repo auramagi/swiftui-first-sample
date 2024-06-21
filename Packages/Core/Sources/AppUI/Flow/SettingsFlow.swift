@@ -12,27 +12,29 @@ struct SettingsFlow<Container: AppContainer>: View {
     let container: Container
 
     var body: some View {
-        _Content(flow: self)
+        Content(flow: self)
             .dependency(container)
     }
 }
 
-private struct _Content<Container: AppContainer>: View {
-    let flow: SettingsFlow<Container>
+extension SettingsFlow {
+    private struct Content: View {
+        let flow: SettingsFlow
 
-    @State private var isShowingWelcome = false
+        @State private var isShowingWelcome = false
 
-    var body: some View {
-        NavigationStack {
-            SettingsScreen(flow: .init(
-                showWelcome: { isShowingWelcome = true }
-            ))
-            .navigationTitle("Settings")
-        }
-        .sheet(isPresented: $isShowingWelcome) {
-            WelcomeScreen(flow: .init(
-                dismiss: { isShowingWelcome = false }
-            ))
+        var body: some View {
+            NavigationStack {
+                SettingsScreen(flow: .init(
+                    showWelcome: { isShowingWelcome = true }
+                ))
+                .navigationTitle("Settings")
+            }
+            .sheet(isPresented: $isShowingWelcome) {
+                WelcomeScreen(flow: .init(
+                    dismiss: { isShowingWelcome = false }
+                ))
+            }
         }
     }
 }

@@ -12,48 +12,50 @@ struct MainFlow<Container: AppContainer>: View {
     let container: Container
 
     var body: some View {
-        _Content(flow: self)
+        Content(flow: self)
             .dependency(container)
     }
 }
 
-private struct _Content<Container: AppContainer>: View {
-    let flow: MainFlow<Container>
+extension MainFlow {
+    private struct Content: View {
+        let flow: MainFlow
 
-    @AppStorage(SettingsKey.Welcome.didShow) private var didShowWelcome = false
+        @AppStorage(SettingsKey.Welcome.didShow) private var didShowWelcome = false
 
-    var body: some View {
-        ZStack {
-            if didShowWelcome {
-                TabView {
-                    RandomImageFlow(container: flow.container)
-                        .tabItem {
-                            Label("Random", systemImage: "photo")
-                        }
+        var body: some View {
+            ZStack {
+                if didShowWelcome {
+                    TabView {
+                        RandomImageFlow(container: flow.container)
+                            .tabItem {
+                                Label("Random", systemImage: "photo")
+                            }
 
-                    BreedListFlow(container: flow.container)
-                        .tabItem {
-                            Label("Breeds", systemImage: "dog")
-                        }
+                        BreedListFlow(container: flow.container)
+                            .tabItem {
+                                Label("Breeds", systemImage: "dog")
+                            }
 
-                    FavoritesFlow(container: flow.container)
-                        .tabItem {
-                            Label("Favorites", systemImage: "star")
-                        }
+                        FavoritesFlow(container: flow.container)
+                            .tabItem {
+                                Label("Favorites", systemImage: "star")
+                            }
 
-                    SettingsFlow(container: flow.container)
-                        .tabItem {
-                            Label("Settings", systemImage: "gear")
-                        }
+                        SettingsFlow(container: flow.container)
+                            .tabItem {
+                                Label("Settings", systemImage: "gear")
+                            }
+                    }
+                } else {
+                    WelcomeScreen(flow: .init(
+                        dismiss: { didShowWelcome = true }
+                    ))
                 }
-            } else {
-                WelcomeScreen(flow: .init(
-                    dismiss: { didShowWelcome = true }
-                ))
             }
+            .animation(.default, value: didShowWelcome)
+            .withErrorAlertService()
         }
-        .animation(.default, value: didShowWelcome)
-        .withErrorAlertService()
     }
 }
 
